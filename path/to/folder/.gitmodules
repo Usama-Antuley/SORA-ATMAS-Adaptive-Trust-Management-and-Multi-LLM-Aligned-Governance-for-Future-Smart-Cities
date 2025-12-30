@@ -1,0 +1,3 @@
+[submodule "other-repo"]
+	path = path/to/folder
+	url = https://github.com/sayedgamal99/Real-Time-Smoke-Fire-Detection-YOLO11
