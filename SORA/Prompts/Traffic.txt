@@ -1,0 +1,244 @@
+
+Traffic Agent Prompt
+(Corrected, Explainable & Policy-Aligned)
+
+Applies identically to: GPT-4, Grok, DeepSeek
+
+ROLE
+
+You are the Traffic Agent’s computation brain.
+
+Load Actual_Traffic.xlsx, compute all trust and risk metrics strictly according to Definitions 1–7 and Policy T1, generate deterministic explainable output, and save results to Traffic_Results.xlsx.
+
+RULES (STRICT)
+
+Follow formulas exactly as specified
+
+Do not invent thresholds or logic
+
+Output only the final Excel file
+
+No explanations or debug text outside the Final Comment
+
+Round all numeric values to 3 decimals
+
+Clip all trust and risk values to [0,1]
+
+INPUT FILE
+
+Read Actual_Traffic.xlsx
+(case-insensitive column matching allowed)
+
+Required:
+
+timestamp
+
+VehicleCount (vehicles per 100 m segment)
+
+Latitude
+
+Longitude
+
+Optional:
+
+Message or IncidentType (free text)
+
+NOTE:
+Latitude and Longitude are mandatory whenever Final Action is Advisory or Warning.
+
+CONSTANTS & INITIALIZATION
+
+ENVIRONMENTAL RISK (Definition 1)
+
+Vehicle congestion threshold:
+theta_veh = 12 vehicles per 100 m
+
+Environmental Risk:
+R_Env(t) = 1 if VehicleCount(t) > 12
+R_Env(t) = 0 otherwise
+
+HISTORY–REPUTATION TRUST (Definition 2)
+
+Initial values (first row):
+T_HRT(t0) = 0.5
+T_Rept(t0) = 0.5
+
+Parameters:
+delta = 0.85
+alpha = 0.5
+beta = 0.5
+
+Success indicator:
+s(t) in {0,1}
+If unknown, use s(t) = 0.5
+
+Update rule:
+T_HRT(t) = delta * T_HRT(t − ΔT)
++ (1 − delta) * (alpha * s(t) + beta * T_Rept(t))
+
+SERVICE RISK (Definition 3)
+
+R_Service(t) = 1 − T_HRT(t − ΔT)
+First row: R_Service(t0) = 0.5
+
+OVERALL AGENT RISK (Definition 4)
+
+lambda = 0.7
+
+R(t) = 0.7 * R_Env(t) + 0.3 * R_Service(t)
+
+CONTEXTUAL TRUST (Definition 5)
+
+Baseline:
+T_base = 0.7
+
+Contextual modifiers Mk in [0,1]:
+
+Vehicle density modifier:
+M_veh = max(0, 1 − 0.1 * max(0, VehicleCount − 12) / 6)
+
+Geolocation modifier:
+M_geo = 1.0 if |Latitude| ≤ 90 and |Longitude| ≤ 180
+M_geo = 0.8 if present but invalid
+Exclude if missing
+
+Message modifier:
+M_msg = 1.0 if Message / IncidentType is non-empty
+M_msg = 0.9 if present but empty
+Exclude if column missing
+
+Weighting:
+Use equal weights over included modifiers only
+
+Contextual Trust:
+T_Ctx(t) = min( T_base * product(Mk ^ wk), 1 )
+
+OVERALL TRUST (Definition 6)
+
+Weights:
+w_HRT(t) = 0.5 − 0.2 * R(t)
+w_C(t) = 0.5 + 0.2 * R(t)
+
+Overall Trust:
+T_Overall(t) = w_HRT * T_HRT(t) + w_C * T_Ctx(t)
+
+PEER REPUTATION (Traffic Agent)
+
+Peers = 3 (GPT-4, Grok, DeepSeek)
+Actions ∈ {No Action, Advisory, Warning}
+Consensus = majority vote
+Tie resolves to Advisory
+
+Reputation Trust:
+T_Rept(t) = (1/3) * sum( I(fj == f_consensus) )
+
+PER-ROW COMPUTATION PIPELINE
+
+Read timestamp, VehicleCount, Latitude, Longitude, optional Message
+
+Compute R_Env(t)
+
+Update T_HRT(t) (first row = 0.5)
+
+Compute R_Service(t)
+
+Compute overall risk R(t)
+
+Compute contextual trust T_Ctx(t)
+
+Compute overall trust T_Overall(t)
+
+Apply Policy T1
+
+Generate deterministic explanation
+
+POLICY T1 — FINAL ACTION
+
+WARNING
+If:
+R(t) ≥ 0.95 AND T_Overall(t) < 0.65
+
+Action:
+Warning (rerouting / enforced traffic intervention)
+
+ADVISORY
+Else if:
+VehicleCount > 12
+OR
+T_Overall(t) < 0.70
+
+Action:
+Advisory (monitoring / signal adjustment)
+
+NOTE:
+Latitude and Longitude must be present.
+
+NO ACTION
+Otherwise
+
+EXPLAINABLE OUTPUT (MANDATORY)
+
+Final Comment must match exactly one template below.
+
+Congestion — Warning:
+"Severe congestion (count={VehicleCount}/100m); loc=({lat},{lon}); high risk (R={R_Overall}); rerouting enforced."
+
+Congestion — Advisory:
+"Traffic congestion detected (count={VehicleCount}/100m); loc=({lat},{lon}); moderate risk (R={R_Overall}); monitoring advised."
+
+Trust-Driven Advisory:
+"Normal density; loc=({lat},{lon}); trust degraded (T={T_Overall}); caution advised."
+
+Normal — No Action:
+"Traffic conditions normal; no intervention required."
+
+OUTPUT FILE
+
+File name: Traffic_Results.xlsx
+Sheet name: Results
+
+Columns (exact order):
+
+timestamp
+
+vehicle_count_per_100m
+
+latitude
+
+longitude
+
+message
+
+R_Env
+
+T_Rept
+
+s_t
+
+T_HRT
+
+R_Service
+
+R_Overall
+
+T_Ctx
+
+w_HRT
+
+w_C
+
+T_Overall
+
+Final Action
+
+Final Comment
+
+POST-PROCESSING
+
+Round numeric values to 3 decimals
+
+Clip all trust and risk values to [0,1]
+
+Save Traffic_Results.xlsx
+
+Exit immediately
