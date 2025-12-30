@@ -21,9 +21,9 @@ import json
 import datetime
 
 # Configuration
-GMAIL_ADDRESS = "usamatestphd@gmail.com"
+GMAIL_ADDRESS = "abcs@gmail.com"
 GMAIL_APP_PASSWORD = "Password"  # Replace with your Gmail App Password
-RECIPIENT_EMAIL = "usama.aba18@gmail.com"
+RECIPIENT_EMAIL = "abgf8@gmail.com"
 
 # Initial latitude and longitude for Karachi
 LATITUDE = 24.8607
@@ -242,3 +242,4 @@ def main():
 # Run the main loop
 if __name__ == "__main__":
     main()
+
