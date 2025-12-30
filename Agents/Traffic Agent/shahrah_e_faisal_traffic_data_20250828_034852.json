@@ -1,0 +1,121 @@
+{
+  "density": [
+    {
+      "name": "Hotel Metropole",
+      "latitude": 24.8531,
+      "longitude": 67.0271,
+      "error": "400 Client Error: Bad Request for url: https://api.tomtom.com/traffic/services/4/flowSegmentData/relative/10/json?key=5gvtOvFQVRKy8VHHp6l4MpgLSqmgCkdm&point=24.853100,67.027100&unit=KMPH"
+    },
+    {
+      "name": "Baloch Colony Flyover",
+      "latitude": 24.8601,
+      "longitude": 67.0601,
+      "error": "400 Client Error: Bad Request for url: https://api.tomtom.com/traffic/services/4/flowSegmentData/relative/10/json?key=5gvtOvFQVRKy8VHHp6l4MpgLSqmgCkdm&point=24.860100,67.060100&unit=KMPH"
+    },
+    {
+      "name": "Drigh Road Flyover",
+      "latitude": 24.8821,
+      "longitude": 67.1151,
+      "error": "400 Client Error: Bad Request for url: https://api.tomtom.com/traffic/services/4/flowSegmentData/relative/10/json?key=5gvtOvFQVRKy8VHHp6l4MpgLSqmgCkdm&point=24.882100,67.115100&unit=KMPH"
+    },
+    {
+      "name": "Star Gate",
+      "latitude": 24.8961,
+      "longitude": 67.1371,
+      "error": "400 Client Error: Bad Request for url: https://api.tomtom.com/traffic/services/4/flowSegmentData/relative/10/json?key=5gvtOvFQVRKy8VHHp6l4MpgLSqmgCkdm&point=24.896100,67.137100&unit=KMPH"
+    }
+  ],
+  "incidents": [
+    {
+      "name": "Hotel Metropole",
+      "latitude": 24.8531,
+      "longitude": 67.0271,
+      "incidents": []
+    },
+    {
+      "name": "Baloch Colony Flyover",
+      "latitude": 24.8601,
+      "longitude": 67.0601,
+      "incidents": []
+    },
+    {
+      "name": "Drigh Road Flyover",
+      "latitude": 24.8821,
+      "longitude": 67.1151,
+      "incidents": []
+    },
+    {
+      "name": "Star Gate",
+      "latitude": 24.8961,
+      "longitude": 67.1371,
+      "incidents": []
+    }
+  ],
+  "route": {
+    "start": {
+      "latitude": 24.8531,
+      "longitude": 67.0271
+    },
+    "end": {
+      "latitude": 24.8961,
+      "longitude": 67.1371
+    },
+    "travelTimeSeconds": 2222,
+    "distanceMeters": 16885
+  },
+  "waypoints": {
+    "optimizedOrder": []
+  },
+  "evCharging": [
+    {
+      "name": "Hotel Metropole",
+      "latitude": 24.8531,
+      "longitude": 67.0271,
+      "stations": []
+    },
+    {
+      "name": "Baloch Colony Flyover",
+      "latitude": 24.8601,
+      "longitude": 67.0601,
+      "stations": []
+    },
+    {
+      "name": "Drigh Road Flyover",
+      "latitude": 24.8821,
+      "longitude": 67.1151,
+      "stations": []
+    },
+    {
+      "name": "Star Gate",
+      "latitude": 24.8961,
+      "longitude": 67.1371,
+      "stations": []
+    }
+  ],
+  "poi": [
+    {
+      "name": "Hotel Metropole",
+      "latitude": 24.8531,
+      "longitude": 67.0271,
+      "pois": []
+    },
+    {
+      "name": "Baloch Colony Flyover",
+      "latitude": 24.8601,
+      "longitude": 67.0601,
+      "pois": []
+    },
+    {
+      "name": "Drigh Road Flyover",
+      "latitude": 24.8821,
+      "longitude": 67.1151,
+      "pois": []
+    },
+    {
+      "name": "Star Gate",
+      "latitude": 24.8961,
+      "longitude": 67.1371,
+      "pois": []
+    }
+  ]
+}
