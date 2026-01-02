@@ -1,0 +1,114 @@
+[
+    {
+        "PolicyHash": "SORA-POL-WT-001",
+        "Subject": "WeatherAgent",
+        "Object": "TrafficAgent",
+        "CollaborativeServiceTrust": 0.78,
+        "CollaborativeServicePTrust": 0.75,
+        "CollaborativeServiceCTrust": 0.82,
+        "Time": "2024-05-15T21:56:11Z",
+        "Decision": "approve",
+        "CrossDomainConstraint": "weather_validation_required"
+    },
+    {
+        "PolicyHash": "SORA-POL-TS-002",
+        "Subject": "TrafficAgent",
+        "Object": "SafetyAgent",
+        "CollaborativeServiceTrust": 0.65,
+        "CollaborativeServicePTrust": 0.68,
+        "CollaborativeServiceCTrust": 0.62,
+        "Time": "2024-05-15T21:56:13Z",
+        "Decision": "restrict",
+        "CrossDomainConstraint": "hazard_zone_avoidance"
+    },
+    {
+        "PolicyHash": "SORA-POL-WS-003",
+        "Subject": "WeatherAgent",
+        "Object": "SafetyAgent",
+        "CollaborativeServiceTrust": 0.72,
+        "CollaborativeServicePTrust": 0.70,
+        "CollaborativeServiceCTrust": 0.74,
+        "Time": "2024-05-15T20:57:29Z",
+        "Decision": "approve",
+        "CrossDomainConstraint": "extreme_weather_override"
+    },
+    {
+        "PolicyHash": "SORA-POL-TW-004",
+        "Subject": "TrafficAgent",
+        "Object": "WeatherAgent",
+        "CollaborativeServiceTrust": 0.81,
+        "CollaborativeServicePTrust": 0.79,
+        "CollaborativeServiceCTrust": 0.83,
+        "Time": "2024-05-15T20:57:31Z",
+        "Decision": "approve",
+        "CrossDomainConstraint": "congestion_weather_correlation"
+    },
+    {
+        "PolicyHash": "SORA-POL-ECO-005",
+        "Subject": "WeatherAgent",
+        "Object": "TrafficAgent",
+        "CollaborativeServiceTrust": 0.58,
+        "CollaborativeServicePTrust": 0.55,
+        "CollaborativeServiceCTrust": 0.61,
+        "Time": "2024-05-15T20:59:45Z",
+        "Decision": "restrict",
+        "CrossDomainConstraint": "ecosystem_risk_threshold",
+        "EcosystemRisk": 0.73
+    },
+    {
+        "PolicyHash": "SORA-POL-SW-006",
+        "Subject": "SafetyAgent",
+        "Object": "WeatherAgent",
+        "CollaborativeServiceTrust": 0.69,
+        "CollaborativeServicePTrust": 0.67,
+        "CollaborativeServiceCTrust": 0.71,
+        "Time": "2024-05-15T21:00:12Z",
+        "Decision": "approve",
+        "CrossDomainConstraint": "fire_weather_coordination"
+    },
+    {
+        "PolicyHash": "SORA-POL-ST-007",
+        "Subject": "SafetyAgent",
+        "Object": "TrafficAgent",
+        "CollaborativeServiceTrust": 0.63,
+        "CollaborativeServicePTrust": 0.60,
+        "CollaborativeServiceCTrust": 0.66,
+        "Time": "2024-05-15T21:03:03Z",
+        "Decision": "restrict",
+        "CrossDomainConstraint": "evacuation_route_priority"
+    },
+    {
+        "PolicyHash": "SORA-POL-WT-008",
+        "Subject": "WeatherAgent",
+        "Object": "TrafficAgent",
+        "CollaborativeServiceTrust": 0.85,
+        "CollaborativeServicePTrust": 0.82,
+        "CollaborativeServiceCTrust": 0.88,
+        "Time": "2024-05-15T21:04:38Z",
+        "Decision": "approve",
+        "CrossDomainConstraint": "normal_operations"
+    },
+    {
+        "PolicyHash": "SORA-POL-TS-009",
+        "Subject": "TrafficAgent",
+        "Object": "SafetyAgent",
+        "CollaborativeServiceTrust": 0.71,
+        "CollaborativeServicePTrust": 0.69,
+        "CollaborativeServiceCTrust": 0.73,
+        "Time": "2024-05-15T21:04:40Z",
+        "Decision": "approve",
+        "CrossDomainConstraint": "routine_coordination"
+    },
+    {
+        "PolicyHash": "SORA-POL-ECO-010",
+        "Subject": "SafetyAgent",
+        "Object": "WeatherAgent",
+        "CollaborativeServiceTrust": 0.52,
+        "CollaborativeServicePTrust": 0.50,
+        "CollaborativeServiceCTrust": 0.54,
+        "Time": "2024-05-15T21:08:34Z",
+        "Decision": "deny",
+        "CrossDomainConstraint": "ecosystem_trust_threshold",
+        "EcosystemTrust": 0.59
+    }
+]
