@@ -11,7 +11,7 @@ from xai_sdk import Client as XAIClient
 # --------------------------------------------------
 # CONFIGURATION
 # --------------------------------------------------
-BASE_DIR = "Agent"
+BASE_DIR = "RawData"
 RESULT_DIR = "Results"
 os.makedirs(RESULT_DIR, exist_ok=True)
 
