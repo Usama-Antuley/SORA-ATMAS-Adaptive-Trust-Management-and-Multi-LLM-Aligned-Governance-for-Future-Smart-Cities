@@ -1266,9 +1266,9 @@ def query_stream(self, stream_name, count=10, start=-10):
         ...     print(item['data']['decision_id'])
     """
 ```
-# REST API Endpoints (Optional)
-## If running with web server:
-# Start REST API server
+## REST API Endpoints (Optional)
+#### If running with web server:
+#### Start REST API server
 
 ```bash
 python api_server.py --port 8080 --host 0.0.0.0
@@ -1277,7 +1277,7 @@ python api_server.py --port 8080 --host 0.0.0.0
 
 Common issues, solutions, and debugging tips provided.
 
-# Common Issues & Solutions
+#### Common Issues & Solutions
 1. MultiChain Connection Issues
 ```bash
 # Check if daemons are running
@@ -1410,7 +1410,7 @@ ps aux --sort=-%mem | head -10'
 #   max_cpu_percent: 70
 #   use_gpu: true
 ```
-# Debug Mode Activation
+#### Debug Mode Activation
 ```bash
 # Enable comprehensive debugging
 import logging
@@ -1457,7 +1457,7 @@ if __name__ == "__main__":
 ```
 
 ## 📈 System Monitoring
-# Health Check Dashboard
+### Health Check Dashboard
 ```bash
 # health_dashboard.py
 import streamlit as st
@@ -1661,7 +1661,7 @@ if __name__ == "__main__":
     monitor = SORAMonitor()
     monitor.run()
 ```
-# Command-line Monitoring Tools
+#### Command-line Monitoring Tools
 ```bash
 # Real-time log monitoring
 tail -f logs/agent_weather.log logs/agent_traffic.log logs/agent_safety.log
@@ -1692,7 +1692,7 @@ EOF
 chmod +x system_monitor.sh
 watch -n 10 ./system_monitor.sh
 ```
-# Alerting System
+#### Alerting System
 ```bash
 # alert_system.py
 import smtplib
