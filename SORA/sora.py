@@ -10,6 +10,7 @@ Original file is located at
 import datetime
 import json
 from typing import Dict, List, Tuple, Optional, Any
+from multichain import MultiChainClient
 
 class SORA:
     """
@@ -26,7 +27,8 @@ class SORA:
                  epsilon_t: float = 0.1,
                  mae_tie_tolerance: float = 0.01,
                  hysteresis: float = 0.05,
-                 cooldown: int = 300) -> None:
+                 cooldown: int = 300,
+                 mc_clients=None, generative_stream_name="GenerativeLog") -> None:
         """
         Initialize SORA with policy configurations.
 
@@ -54,7 +56,69 @@ class SORA:
         # Mock state for hysteresis and cooldown (in production, persist via DB)
         self.last_escalation_time: Optional[datetime.datetime] = None
         self.previous_escalation: bool = False
+        self.mc_clients = mc_clients or {}
+        self.generative_stream = generative_stream_name
+        self.MULTICHAIN_AVAILABLE = bool(self.mc_clients)
 
+    def ensure_generative_stream(self):
+        """Create and subscribe to the generative log stream if it doesn't exist"""
+        if not self.MULTICHAIN_AVAILABLE:
+            return False
+
+        for name, client in self.mc_clients.items():
+            try:
+                streams = client.liststreams(self.generative_stream)
+                if not streams:
+                    print(f"[{name}] Creating stream {self.generative_stream}...")
+                    client.createstream(self.generative_stream, open=True)
+                    client.subscribe(self.generative_stream)
+                return True
+            except Exception as e:
+                print(f"[{name}] Failed to ensure stream {self.generative_stream}: {e}")
+        return False
+
+    def log_generative_activity(self, 
+                               service_id: str,
+                               context: dict | str,
+                               llm_data: dict | None = None,
+                               sora_data: dict | None = None,
+                               extra: dict | None = None):
+        if not self.MULTICHAIN_AVAILABLE:
+            print("MultiChain not available - skipping generative log")
+            return False
+
+        timestamp = datetime.utcnow().isoformat() + "Z"
+        
+        entry = {
+            "timestamp": timestamp,
+            "service_id": service_id,
+            "uuid": str(uuid.uuid4())[:10],
+            "context": context if isinstance(context, dict) else {"description": str(context)},
+        }
+
+        if llm_data:
+            entry["llm"] = llm_data
+        if sora_data:
+            entry["sora"] = sora_data
+        if extra:
+            entry.update(extra)
+
+        success = True
+        for name, client in self.mc_clients.items():
+            try:
+                # Make sure stream exists (idempotent)
+                self.ensure_generative_stream()
+
+                # Simple key: service_id + rough time
+                key = [service_id, timestamp.replace(":", "-")[:19]]
+
+                client.publish(self.generative_stream, key, {"json": entry})
+                print(f"→ Published generative log to {name}/{self.generative_stream}")
+            except Exception as e:
+                print(f"[{name}] Failed to publish generative log: {e}")
+                success = False
+
+        return success
     def compute_sora_reference(self, agent_packet: Dict[str, Any]) -> Tuple[float, float]:
         """
         Recompute reference risk (R_ref) and trust (T_ref) using Definitions 1-7.
@@ -466,30 +530,140 @@ class SORA:
             "metadata": metadata
         }
 
-if __name__ == "__main__":
-    sora = SORA()
+# mc_clients = { ... }   # your existing clients
 
+# New / extended constant
+GENERATIVE_STREAM = "GenerativeLog"
+
+# Helper to initialize the stream if needed (safe to call multiple times)
+def ensure_generative_stream(mc_client):
+    try:
+        # Check if stream exists
+        info = mc_client.liststreams(GENERATIVE_STREAM)
+        if not info:
+            print(f"Creating stream {GENERATIVE_STREAM}...")
+            mc_client.createstream(GENERATIVE_STREAM, True)  # open = True
+            mc_client.subscribe(GENERATIVE_STREAM)
+    except Exception as e:
+        print(f"Could not ensure {GENERATIVE_STREAM} stream: {e}")
+
+
+# ================== New function - logging generative AI activity ==================
+def log_generative_activity(mc_clients, service_id, context, llm_data=None, sora_data=None):
+    """
+    Logs LLM calls and Sora generations to a dedicated MultiChain stream
+    """
+    if not MULTICHAIN_AVAILABLE:
+        print("MultiChain not available - skipping generative log")
+        return
+
+    timestamp = datetime.utcnow().isoformat() + "Z"
+    
+    entry = {
+        "timestamp": timestamp,
+        "service_id": service_id,
+        "uuid": str(uuid.uuid4())[:8],          # short unique id
+        "context": context,                     # e.g. "city_alert", "irrigation_decision", etc.
+        
+        # LLM related
+        "llm": llm_data or None,                # can be dict: {"prompt": ..., "output": ..., "model": ..., "tokens": ...}
+        
+        # Sora / video generation related
+        "sora": sora_data or None,              # dict: {"prompt": ..., "video_path": ..., "status": "success"/"failed", "duration_sec": ..., "error": ...}
+    }
+
+    # Clean None values if you prefer
+    if entry["llm"] is None:
+        entry.pop("llm")
+    if entry["sora"] is None:
+        entry.pop("sora")
+
+    for name, client in mc_clients.items():
+        try:
+            ensure_generative_stream(client)  # idempotent
+            
+            client.publish(GENERATIVE_STREAM, 
+                          [service_id, timestamp.replace(":", "-")[:19]],  # rough key for ordering
+                          {"json": entry})
+            
+            print(f"→ Published generative log to {name}/{GENERATIVE_STREAM}")
+        except Exception as e:
+            print(f"Failed to publish generative log to {name}: {e}")
+
+if __name__ == "__main__":
+    # If mc_clients is defined globally or elsewhere, pass it to SORA
+    # Otherwise SORA uses its default (empty dict)
+    sora = SORA(mc_clients=mc_clients)  # ← adjust if mc_clients is defined differently
+
+    # Load agent results
     weather_packet = load_agent_results("Weather")
     traffic_packet = load_agent_results("Traffic")
-    safety_packet  = load_agent_results("Safety")
+    safety_packet = load_agent_results("Safety")
 
-    # Process agents
     agent_packets = [weather_packet, traffic_packet, safety_packet]
     agent_decisions = []
+
+    # Process each agent and collect generative metadata
     for packet in agent_packets:
         decision = sora.process_agent(packet)
         if decision:
             decision["agent_id"] = packet["agent_id"]  # Add for later reference
             agent_decisions.append(decision)
 
-    # Ecosystem
+    # Ecosystem evaluation
     current_time = datetime.datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
     ecosystem = sora.ecosystem_evaluation(agent_decisions, current_time)
 
-    # Generate alert
+    # Generate final alert
     alert = sora.generate_city_alert(agent_decisions, timestamp, location, ecosystem)
 
-    # Output the alert
+    # ───────────────────────────────────────────────────────────────
+    # Log generative AI activity (LLM + Sora) to MultiChain
+    # ───────────────────────────────────────────────────────────────
+    if sora.MULTICHAIN_AVAILABLE:
+        log_context = {
+            "phase": "city_safety_alert_generation",
+            "location": location,
+            "timestamp": timestamp,
+            "agent_count": len(agent_decisions),
+            "ecosystem_summary": ecosystem.get("summary", "no summary available")
+        }
+
+        # Collect LLM data (example – adjust based on what your SORA class actually stores)
+        llm_data = None
+        if hasattr(sora, 'last_llm_prompt') and hasattr(sora, 'last_llm_output'):
+            llm_data = {
+                "model": "unknown-model",  # ← update with actual model name if known
+                "prompt": sora.last_llm_prompt,
+                "output": sora.last_llm_output,
+                "phase": "final_alert"     # or "ecosystem_eval", etc.
+            }
+
+        # Collect Sora data (example – adjust similarly)
+        sora_data = None
+        if hasattr(sora, 'last_sora_prompt') and hasattr(sora, 'last_sora_result'):
+            sora_data = {
+                "prompt": sora.last_sora_prompt,
+                "video_path": sora.last_sora_result.get("path", "unknown"),
+                "status": sora.last_sora_result.get("status", "unknown"),
+                "duration_sec": sora.last_sora_result.get("duration_sec", None)
+            }
+
+        # Perform the logging
+        sora.log_generative_activity(
+            service_id=f"city-alert-{location.replace(' ', '-')}-{timestamp[:10]}",
+            context=log_context,
+            llm_data=llm_data,
+            sora_data=sora_data,
+            extra={
+                "alert_level": alert.get("severity", "unknown"),
+                "alert_title": alert.get("title", "no title")
+            }
+        )
+    else:
+        print("MultiChain not available – generative activity not logged")
+
+    # Output the final alert
     print(json.dumps(alert, indent=2))
 
     # Inline comments on example:
