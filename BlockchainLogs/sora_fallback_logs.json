@@ -1,0 +1,65 @@
+{
+  "system": "SORA-ATMAS",
+  "log_type": "fallback_logs",
+  "version": "1.0",
+  "timestamp": "2026-01-02T20:48:32.821166Z",
+  "logs": [
+    {
+      "t": "2026-01-02T15:39:32.820418Z",
+      "tx": "0xaba505dcdde84d3a",
+      "scope": "ecosystem",
+      "trigger": "S5_citywide",
+      "R_eco": 0.85,
+      "T_eco": 0.64,
+      "action": "emergency_protocol",
+      "human_review": true
+    },
+    {
+      "t": "2026-01-01T23:10:32.820571Z",
+      "tx": "0x9801b7f9eae844a0",
+      "agent": "Safety_Fire_713",
+      "trigger": "S1_fail",
+      "R": 0.92,
+      "T": 0.55,
+      "T_req": 0.65,
+      "selected_LLM": "Grok-4",
+      "action": "approve_restricted"
+    },
+    {
+      "t": "2026-01-02T17:57:32.820811Z",
+      "tx": "0x38fa6c81d8694b9a",
+      "agents": [
+        "Weather_663",
+        "Traffic_132"
+      ],
+      "trigger": "S4_joint",
+      "R_avg": 0.835,
+      "selected_LLMs": [
+        "DeepSeek-R1",
+        "Grok-4"
+      ],
+      "action": "joint_alert"
+    },
+    {
+      "t": "2026-01-02T16:47:32.820958Z",
+      "tx": "0x714d152938064468",
+      "scope": "ecosystem",
+      "trigger": "S5_citywide",
+      "R_eco": 0.82,
+      "T_eco": 0.62,
+      "action": "emergency_protocol",
+      "human_review": false
+    },
+    {
+      "t": "2026-01-02T02:40:32.821019Z",
+      "tx": "0x5af69e1e41c24ef0",
+      "agent": "Weather_909",
+      "trigger": "S1_fail",
+      "R": 0.8,
+      "T": 0.57,
+      "T_req": 0.6,
+      "selected_LLM": "DeepSeek-R1",
+      "action": "restrict_forecast"
+    }
+  ]
+}
