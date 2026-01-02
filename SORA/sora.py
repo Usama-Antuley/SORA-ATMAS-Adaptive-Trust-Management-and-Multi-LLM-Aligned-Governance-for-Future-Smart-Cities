@@ -27,8 +27,7 @@ class SORA:
                  epsilon_t: float = 0.1,
                  mae_tie_tolerance: float = 0.01,
                  hysteresis: float = 0.05,
-                 cooldown: int = 300,
-                 mc_clients=None, generative_stream_name="GenerativeLog") -> None:
+                 cooldown: int = 300) -> None:
         """
         Initialize SORA with policy configurations.
 
@@ -56,69 +55,7 @@ class SORA:
         # Mock state for hysteresis and cooldown (in production, persist via DB)
         self.last_escalation_time: Optional[datetime.datetime] = None
         self.previous_escalation: bool = False
-        self.mc_clients = mc_clients or {}
-        self.generative_stream = generative_stream_name
-        self.MULTICHAIN_AVAILABLE = bool(self.mc_clients)
-
-    def ensure_generative_stream(self):
-        """Create and subscribe to the generative log stream if it doesn't exist"""
-        if not self.MULTICHAIN_AVAILABLE:
-            return False
-
-        for name, client in self.mc_clients.items():
-            try:
-                streams = client.liststreams(self.generative_stream)
-                if not streams:
-                    print(f"[{name}] Creating stream {self.generative_stream}...")
-                    client.createstream(self.generative_stream, open=True)
-                    client.subscribe(self.generative_stream)
-                return True
-            except Exception as e:
-                print(f"[{name}] Failed to ensure stream {self.generative_stream}: {e}")
-        return False
-
-    def log_generative_activity(self, 
-                               service_id: str,
-                               context: dict | str,
-                               llm_data: dict | None = None,
-                               sora_data: dict | None = None,
-                               extra: dict | None = None):
-        if not self.MULTICHAIN_AVAILABLE:
-            print("MultiChain not available - skipping generative log")
-            return False
-
-        timestamp = datetime.utcnow().isoformat() + "Z"
-        
-        entry = {
-            "timestamp": timestamp,
-            "service_id": service_id,
-            "uuid": str(uuid.uuid4())[:10],
-            "context": context if isinstance(context, dict) else {"description": str(context)},
-        }
-
-        if llm_data:
-            entry["llm"] = llm_data
-        if sora_data:
-            entry["sora"] = sora_data
-        if extra:
-            entry.update(extra)
-
-        success = True
-        for name, client in self.mc_clients.items():
-            try:
-                # Make sure stream exists (idempotent)
-                self.ensure_generative_stream()
-
-                # Simple key: service_id + rough time
-                key = [service_id, timestamp.replace(":", "-")[:19]]
-
-                client.publish(self.generative_stream, key, {"json": entry})
-                print(f"→ Published generative log to {name}/{self.generative_stream}")
-            except Exception as e:
-                print(f"[{name}] Failed to publish generative log: {e}")
-                success = False
-
-        return success
+                     
     def compute_sora_reference(self, agent_packet: Dict[str, Any]) -> Tuple[float, float]:
         """
         Recompute reference risk (R_ref) and trust (T_ref) using Definitions 1-7.
@@ -591,9 +528,7 @@ def log_generative_activity(mc_clients, service_id, context, llm_data=None, sora
             print(f"Failed to publish generative log to {name}: {e}")
 
 if __name__ == "__main__":
-    # If mc_clients is defined globally or elsewhere, pass it to SORA
-    # Otherwise SORA uses its default (empty dict)
-    sora = SORA(mc_clients=mc_clients)  # ← adjust if mc_clients is defined differently
+    sora = SORA()  
 
     # Load agent results
     weather_packet = load_agent_results("Weather")
@@ -616,52 +551,6 @@ if __name__ == "__main__":
 
     # Generate final alert
     alert = sora.generate_city_alert(agent_decisions, timestamp, location, ecosystem)
-
-    # ───────────────────────────────────────────────────────────────
-    # Log generative AI activity (LLM + Sora) to MultiChain
-    # ───────────────────────────────────────────────────────────────
-    if sora.MULTICHAIN_AVAILABLE:
-        log_context = {
-            "phase": "city_safety_alert_generation",
-            "location": location,
-            "timestamp": timestamp,
-            "agent_count": len(agent_decisions),
-            "ecosystem_summary": ecosystem.get("summary", "no summary available")
-        }
-
-        # Collect LLM data (example – adjust based on what your SORA class actually stores)
-        llm_data = None
-        if hasattr(sora, 'last_llm_prompt') and hasattr(sora, 'last_llm_output'):
-            llm_data = {
-                "model": "unknown-model",  # ← update with actual model name if known
-                "prompt": sora.last_llm_prompt,
-                "output": sora.last_llm_output,
-                "phase": "final_alert"     # or "ecosystem_eval", etc.
-            }
-
-        # Collect Sora data (example – adjust similarly)
-        sora_data = None
-        if hasattr(sora, 'last_sora_prompt') and hasattr(sora, 'last_sora_result'):
-            sora_data = {
-                "prompt": sora.last_sora_prompt,
-                "video_path": sora.last_sora_result.get("path", "unknown"),
-                "status": sora.last_sora_result.get("status", "unknown"),
-                "duration_sec": sora.last_sora_result.get("duration_sec", None)
-            }
-
-        # Perform the logging
-        sora.log_generative_activity(
-            service_id=f"city-alert-{location.replace(' ', '-')}-{timestamp[:10]}",
-            context=log_context,
-            llm_data=llm_data,
-            sora_data=sora_data,
-            extra={
-                "alert_level": alert.get("severity", "unknown"),
-                "alert_title": alert.get("title", "no title")
-            }
-        )
-    else:
-        print("MultiChain not available – generative activity not logged")
 
     # Output the final alert
     print(json.dumps(alert, indent=2))
