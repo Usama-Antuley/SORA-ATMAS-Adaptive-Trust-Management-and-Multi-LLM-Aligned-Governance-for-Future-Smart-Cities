@@ -130,16 +130,16 @@ pip install python-dotenv tqdm
 ### Step 1: Clone Repository
 
 
-# Clone the SORA-ATMAS repository
+#### Clone the SORA-ATMAS repository
 ```bash
 git clone https://github.com/Usama-Antuley/SORA-ATMAS-Adaptive-Trust-Management-and-Multi-LLM-Aligned-Governance-for-Future-Smart-Cities.git
 cd SORA-ATMAS-Adaptive-Trust-Management-and-Multi-LLM-Aligned-Governance-for-Future-Smart-Cities
 ```
-# Navigate to main directory
+#### Navigate to main directory
 ```bash
 cd Multichain
 ```
-# Create virtual environment
+#### Create virtual environment
 ```bash
 python3 -m venv sora_env
 source sora_env/bin/activate  # Linux/Mac
@@ -210,40 +210,40 @@ wget https://www.multichain.com/download/multichain-2.3.3.tar.gz
 tar -xvzf multichain-2.3.3.tar.gz
 cd multichain-2.3.3
 ```
-# Move binaries to system path
+#### Move binaries to system path
 ```bash
 sudo mv multichaind multichain-cli multichain-util /usr/local/bin/
 ```
-# Verify installation
+#### Verify installation
 ```bash
 multichaind --version
 ```
-# Expected: MultiChain 2.3.3 Daemon (community edition)
+#### Expected: MultiChain 2.3.3 Daemon (community edition)
 
 ### Step 2 Create two separate blockchains: Agentic (for edge agents) and SORA (for governance):
-# Create blockchain directories
+#### Create blockchain directories
 ```bash
 mkdir -p ~/.multichain/{agentic,sora}
 mkdir -p ~/blockchains/{agentic,sora}
 ```
-# Create Agentic Blockchain (for agents)
+#### Create Agentic Blockchain (for agents)
 ```bash
 echo "Creating Agentic Blockchain..."
 multichain-util create agentic
 ```
-# Create SORA Blockchain (for governance)
+#### Create SORA Blockchain (for governance)
 ```bash
 echo "Creating SORA Blockchain..."
 multichain-util create sora
 ```
-# Configure custom ports to avoid conflicts
+#### Configure custom ports to avoid conflicts
 ```bash
 sed -i 's/default-network-port = [0-9]*/default-network-port = 9740/' ~/.multichain/agentic/params.dat
 sed -i 's/default-rpc-port = [0-9]*/default-rpc-port = 9741/' ~/.multichain/agentic/params.dat
 sed -i 's/default-network-port = [0-9]*/default-network-port = 9742/' ~/.multichain/sora/params.dat
 sed -i 's/default-rpc-port = [0-9]*/default-rpc-port = 9743/' ~/.multichain/sora/params.dat
 ```
-# Enable mining for both chains
+#### Enable mining for both chains
 
 ```bash
 sed -i 's/mine-empty-rounds = 0/mine-empty-rounds = 1/' ~/.multichain/agentic/params.dat
@@ -269,7 +269,7 @@ multichain-cli sora getinfo
 AGENTIC_PASSWORD=$(openssl rand -base64 32)
 SORA_PASSWORD=$(openssl rand -base64 32)
 ```
-# Configure Agentic Blockchain RPC
+#### Configure Agentic Blockchain RPC
 ```bash
 cat > ~/.multichain/agentic/multichain.conf << EOF
 rpcuser=multichainrpc
@@ -279,7 +279,7 @@ rpcconnect=127.0.0.1
 rpcport=9741
 EOF
 ```
-# Configure SORA Blockchain RPC
+#### Configure SORA Blockchain RPC
 ```bash
 cat > ~/.multichain/sora/multichain.conf << EOF
 rpcuser=multichainrpc
@@ -289,14 +289,14 @@ rpcconnect=127.0.0.1
 rpcport=9743
 EOF
 ```
-# Save passwords to keys directory
+#### Save passwords to keys directory
 ```bash
 mkdir -p keys
 echo "$AGENTIC_PASSWORD" > keys/agentic_rpc.conf
 echo "$SORA_PASSWORD" > keys/sora_rpc.conf
 chmod 600 keys/*.conf
 ```
-# Restart daemons with new configuration
+#### Restart daemons with new configuration
 ```bash
 pkill multichaind
 sleep 5
@@ -305,7 +305,7 @@ multichaind agentic -daemon
 multichaind sora -daemon
 ```
 ### Step 5: Test Blockchain Connections
-# test_blockchain.py
+**test_blockchain.py**
 ```bash
 import multichain
 import json
@@ -341,9 +341,9 @@ python test_blockchain.py
 ```
 ## 📊 Blockchain Streams Configuration
 
-### Use `create_sora_streams.py` to initialize all required streams on both blockchains.
-### Create a comprehensive Python script to initialize all streams for both blockchains:
-### create_sora_streams.py
+#### Use `create_sora_streams.py` to initialize all required streams on both blockchains.
+#### Create a comprehensive Python script to initialize all streams for both blockchains:
+ **create_sora_streams.py**
 
 ```bash
 import multichain
@@ -444,7 +444,7 @@ def create_streams():
 if __name__ == "__main__":
     create_streams()
 ```
-# Run the stream creation script:
+#### Run the stream creation script:
 ```bash
 python create_sora_streams.py
 ```
@@ -487,7 +487,7 @@ if __name__ == "__main__":
 EOF
 ```
 
-# Run verification
+#### Run verification
 ```bash
 python verify_streams.py
 ```
@@ -547,8 +547,8 @@ if __name__ == "__main__":
 ## 🔧 Core Modules Detailed
 
 1. **Weather Agent** (`agent_weather.py`)
-# Processes meteorological data using XGBoost and multi-LLM reasoning
-# Key Components:
+#### Processes meteorological data using XGBoost and multi-LLM reasoning
+#### Key Components:
 ```bash
 class WeatherAgent:
     """Smart-city weather monitoring and regime classification agent"""
@@ -640,7 +640,7 @@ class WeatherAgent:
                          {'json': log_entry})
         return txid
 ```
-# Configuration File (config/weather_config.yaml):
+#### Configuration File (config/weather_config.yaml):
 ```bash
 weather_agent:
   cities:
@@ -668,8 +668,8 @@ weather_agent:
 ```
 
 3. **Traffic Agent** (`agent_traffic.py`)
-## Monitors vehicle density using YOLOv8 and assesses congestion risk
-## Key Features
+#### Monitors vehicle density using YOLOv8 and assesses congestion risk
+#### Key Features
  ```bash
 class TrafficAgent:
     """Smart-city traffic monitoring and congestion detection agent"""
@@ -750,8 +750,8 @@ class TrafficAgent:
         return recommendations
 ```
 5. **Safety Agent** (`agent_safety.py`)
-## Detects fire and smoke hazards using YOLO11 Flare Guard
-## Key Capabilities
+#### Detects fire and smoke hazards using YOLO11 Flare Guard
+#### Key Capabilities
 ```bash
 class SafetyAgent:
     """Smart-city safety monitoring and hazard detection agent"""
@@ -824,8 +824,8 @@ class SafetyAgent:
 ```
    
 7. **SORA Governance** (`sora_governance.py`)
-## Core governance with MAE-based LLM selection and policy enforcement
-## Governance Component
+#### Core governance with MAE-based LLM selection and policy enforcement
+#### Governance Component
 ```bash
 class SORAGovernance:
     """Central governance layer for multi-agent smart-city system"""
