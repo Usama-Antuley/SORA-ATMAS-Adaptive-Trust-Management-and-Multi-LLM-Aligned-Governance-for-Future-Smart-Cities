@@ -1,0 +1,522 @@
+[
+  {
+    "timestamp": "2025-08-23T21:55:33.086685",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.15
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 5.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 5 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 5"
+    },
+    "action": "No Action",
+    "comment": "Normal density 5.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; no action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "normal_traffic",
+      "emergency_level": "LOW",
+      "created_at": "2026-01-02T20:18:00.526662"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T21:56:40.642039",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 15.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 15 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 15"
+    },
+    "action": "Advisory",
+    "comment": "High density 15.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "moderate_traffic",
+      "emergency_level": "LOW",
+      "created_at": "2026-01-02T20:18:00.526690"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T21:58:22.995884",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 20.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 20 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 20"
+    },
+    "action": "Advisory",
+    "comment": "High density 20.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "heavy_traffic",
+      "emergency_level": "MEDIUM",
+      "created_at": "2026-01-02T20:18:00.526711"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:04:36.047106",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 20.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 20 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 20"
+    },
+    "action": "Advisory",
+    "comment": "High density 20.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "heavy_traffic",
+      "emergency_level": "MEDIUM",
+      "created_at": "2026-01-02T20:18:00.526731"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:04:57.490913",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 20.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 20 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 20"
+    },
+    "action": "Advisory",
+    "comment": "High density 20.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "heavy_traffic",
+      "emergency_level": "MEDIUM",
+      "created_at": "2026-01-02T20:18:00.526748"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:05:34.160005",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 20.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 20 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 20"
+    },
+    "action": "Advisory",
+    "comment": "High density 20.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "heavy_traffic",
+      "emergency_level": "MEDIUM",
+      "created_at": "2026-01-02T20:18:00.526765"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:06:38.521031",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 20.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 20 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 20"
+    },
+    "action": "Advisory",
+    "comment": "High density 20.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "heavy_traffic",
+      "emergency_level": "MEDIUM",
+      "created_at": "2026-01-02T20:18:00.526781"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:08:35.447198",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 50.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 50 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 50"
+    },
+    "action": "Advisory",
+    "comment": "High density 50.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "traffic_jam",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:18:00.526798"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:09:41.743045",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 50.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 50 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 50"
+    },
+    "action": "Advisory",
+    "comment": "High density 50.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "traffic_jam",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:18:00.526813"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:10:52.644921",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 50.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 50 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 50"
+    },
+    "action": "Advisory",
+    "comment": "High density 50.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "traffic_jam",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:18:00.526831"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:11:18.164745",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 50.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 50 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 50"
+    },
+    "action": "Advisory",
+    "comment": "High density 50.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "traffic_jam",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:18:00.526847"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:11:53.992907",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 50.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 50 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 50"
+    },
+    "action": "Advisory",
+    "comment": "High density 50.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "traffic_jam",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:18:00.526864"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:13:03.824822",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 50.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 50 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 50"
+    },
+    "action": "Advisory",
+    "comment": "High density 50.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "traffic_jam",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:18:00.526879"
+    }
+  },
+  {
+    "timestamp": "2025-08-23T22:13:23.811791",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 50.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 50 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 50"
+    },
+    "action": "Advisory",
+    "comment": "High density 50.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "traffic_jam",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:18:00.526897"
+    }
+  },
+  {
+    "timestamp": "2025-08-29T00:38:03.482463",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 50.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 50 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 50"
+    },
+    "action": "Advisory",
+    "comment": "High density 50.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "traffic_jam",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:18:00.526913"
+    }
+  },
+  {
+    "timestamp": "2025-08-29T00:39:12.606683",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 20.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 20 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 20"
+    },
+    "action": "Advisory",
+    "comment": "High density 20.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "heavy_traffic",
+      "emergency_level": "MEDIUM",
+      "created_at": "2026-01-02T20:18:00.526931"
+    }
+  },
+  {
+    "timestamp": "2025-08-29T00:50:43.681646",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 20.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 20 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 20"
+    },
+    "action": "Advisory",
+    "comment": "High density 20.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "heavy_traffic",
+      "emergency_level": "MEDIUM",
+      "created_at": "2026-01-02T20:18:00.526951"
+    }
+  },
+  {
+    "timestamp": "2025-08-29T00:52:12.630875",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 20.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 20 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 20"
+    },
+    "action": "Advisory",
+    "comment": "High density 20.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "heavy_traffic",
+      "emergency_level": "MEDIUM",
+      "created_at": "2026-01-02T20:18:00.526967"
+    }
+  },
+  {
+    "timestamp": "2025-08-30T14:33:06.242798",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 20.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 20 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 20"
+    },
+    "action": "Advisory",
+    "comment": "High density 20.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "heavy_traffic",
+      "emergency_level": "MEDIUM",
+      "created_at": "2026-01-02T20:18:00.526984"
+    }
+  },
+  {
+    "timestamp": "2025-09-03T22:50:17.102258",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.85
+    },
+    "detection_context": {
+      "vehicle_count_per_100m": 20.0,
+      "lat": 24.861,
+      "lon": 67.001,
+      "message": "Traffic Alert: High traffic density detected! 20 vehicles observed. Location: Latitude 24.8607, Longitude 67.0011 Vehicle Count: 20"
+    },
+    "action": "Advisory",
+    "comment": "High density 20.0/100m; GPS valid; Msg: Traffic Alert: High traffic density dete; advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "traffic_agent_001",
+      "agent_type": "traffic_density_detection",
+      "blockchain_stream": "TrafficRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "traffic_condition": "heavy_traffic",
+      "emergency_level": "MEDIUM",
+      "created_at": "2026-01-02T20:18:00.526999"
+    }
+  }
+]
