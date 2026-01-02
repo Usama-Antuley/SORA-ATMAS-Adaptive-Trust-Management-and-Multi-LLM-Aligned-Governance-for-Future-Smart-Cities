@@ -7,10 +7,10 @@ Original file is located at
     https://colab.research.google.com/drive/1V7u0tX4HvxXRaWb04912NdPJCWqL1MRu
 """
 
-import datetime
+import hashlib
 import json
-from typing import Dict, List, Tuple, Optional, Any
-from multichain import MultiChainClient
+from datetime import datetime
+import uuid
 
 class SORA:
     """
