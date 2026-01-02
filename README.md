@@ -1000,43 +1000,66 @@ class SORAGovernance:
 # 📐 Trust & Risk Model Mathematics  
 **Formal Definitions from the SORA-ATMAS Framework**
 
+---
+
 ## Definition 1: Environmental Risk
 
 Environmental risk quantifies deviations from expected operating conditions across continuous signals, capacity constraints, and discrete hazard events.
 
-```math
+\[
 R^{i}_{\text{Env}}(t)=
 \begin{cases}
 \displaystyle \frac{1}{n}\sum_{k=1}^{n}\mathbb{I}\big(|x_k(t)-\mu_k|>\theta_k\big), & \text{continuous signals} \\
 \mathbb{I}\big(\text{Load}(t)>\theta_{\text{cap}}\big), & \text{capacity / volume conditions} \\
 \mathbb{I}\big(\text{HazardEvents}(t)\ge 1\big), & \text{discrete hazard events}
 \end{cases}
-```
+\]
+
+### Parameters
+- \( n \): Number of monitored environmental parameters  
+- \( x_k(t) \): Normalized observation of parameter \(k\) at time \(t\)  
+- \( \mu_k \): Expected baseline value for parameter \(k\)  
+- \( \theta_k \): Acceptable deviation threshold for parameter \(k\)  
+- \( \text{Load}(t) \in [0,1] \): Normalized utilization level  
+- \( \theta_{\text{cap}} \): Maximum safe capacity threshold  
+- \( \text{HazardEvents}(t) \): Count of verified hazard events  
+
+---
 
 ## Definition 2: History-Reputation Trust (HRT)
 
-```math
+\[
 T^{i}_{\text{HRT}}(t)=
 \begin{cases}
 T_0, & t=t_0 \\
 \delta \, T^{i}_{\text{HRT}}(t-\Delta T)
 +(1-\delta)\big(\omega_p\, s(t)+\omega_r\, T^{i}_{\text{Rep}}(t)\big), & \text{otherwise}
 \end{cases}
-```
+\]
+
+---
+
 ## Definition 3: Service Risk
-```math
+
+\[
 R^{i}_{\text{Service}}(t)=1-T^{i}_{\text{HRT}}(t-\Delta T), \qquad
 R^{i}_{\text{Service}}(t_0)=0.5
-```
+\]
+
+---
 
 ## Definition 4: Overall Agent Risk
-```math
+
+\[
 R_i(t)=\lambda_i\, R^{i}_{\text{Env}}(t)
 +\big(1-\lambda_i\big)R^{i}_{\text{Service}}(t)
-```
+\]
+
+---
 
 ## Definition 5: Contextual Trust
-```math
+
+\[
 T^{i}_{\text{Ctx}}(t)
 =\min\!\left(
 T_{\text{base}}
@@ -1044,29 +1067,32 @@ T_{\text{base}}
 \big(M_{i,k}(t)\big)^{w_{i,k}},
 \;1.0
 \right)
-```
+\]
+
+---
 
 ## Definition 6: Overall Trust
-```math
-T^{i}_{\text{Overall}}(t)
-=
-w_{\text{HRT}}(t)\, T^{i}_{\text{HRT}}(t)
-+
-w_{C}(t)\, T^{i}_{\text{Ctx}}(t)
-```
 
-Dynamic weights:
-```math
-w_{C}(t) = 0.5 + 0.2\, R_i(t)
-```
+\[
+T^{i}_{\text{Overall}}(t)
+=w_{\text{HRT}}(t)\,T^{i}_{\text{HRT}}(t)
++w_C(t)\,T^{i}_{\text{Ctx}}(t)
+\]
+
+---
+
 ## Definition 7: Ecosystem Metrics
-```math
+
+\[
 T_{\text{Ecosystem}}(t)
 =\frac{1}{|A(t)|}\sum_{i\in A(t)}T^{i}_{\text{Overall}}(t)
+\]
 
+\[
 R_{\text{Ecosystem}}(t)
 =\max_{i\in A(t)} R_i(t)
-```
+\]
+
 
 ## 🚀 Running the System
 
@@ -1266,9 +1292,9 @@ def query_stream(self, stream_name, count=10, start=-10):
         ...     print(item['data']['decision_id'])
     """
 ```
-## REST API Endpoints (Optional)
-#### If running with web server:
-#### Start REST API server
+# REST API Endpoints (Optional)
+## If running with web server:
+# Start REST API server
 
 ```bash
 python api_server.py --port 8080 --host 0.0.0.0
@@ -1277,7 +1303,7 @@ python api_server.py --port 8080 --host 0.0.0.0
 
 Common issues, solutions, and debugging tips provided.
 
-#### Common Issues & Solutions
+# Common Issues & Solutions
 1. MultiChain Connection Issues
 ```bash
 # Check if daemons are running
@@ -1410,7 +1436,7 @@ ps aux --sort=-%mem | head -10'
 #   max_cpu_percent: 70
 #   use_gpu: true
 ```
-#### Debug Mode Activation
+# Debug Mode Activation
 ```bash
 # Enable comprehensive debugging
 import logging
@@ -1457,7 +1483,7 @@ if __name__ == "__main__":
 ```
 
 ## 📈 System Monitoring
-### Health Check Dashboard
+# Health Check Dashboard
 ```bash
 # health_dashboard.py
 import streamlit as st
@@ -1661,7 +1687,7 @@ if __name__ == "__main__":
     monitor = SORAMonitor()
     monitor.run()
 ```
-#### Command-line Monitoring Tools
+# Command-line Monitoring Tools
 ```bash
 # Real-time log monitoring
 tail -f logs/agent_weather.log logs/agent_traffic.log logs/agent_safety.log
@@ -1692,7 +1718,7 @@ EOF
 chmod +x system_monitor.sh
 watch -n 10 ./system_monitor.sh
 ```
-#### Alerting System
+# Alerting System
 ```bash
 # alert_system.py
 import smtplib
