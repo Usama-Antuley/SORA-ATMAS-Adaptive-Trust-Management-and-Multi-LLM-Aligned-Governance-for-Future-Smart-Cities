@@ -1013,24 +1013,6 @@ R^{i}_{\text{Env}}(t)=
 \end{cases}
 ```
 
-### Parameters
-```math
--
-```math
-\( n \):
-```
-Number of monitored environmental parameters  
--
-```math
-\( x_k(t) \)
-```: Normalized observation of parameter \(k\) at time \(t\)  
-- \( \mu_k \): Expected baseline value for parameter \(k\)  
-- \( \theta_k \): Acceptable deviation threshold for parameter \(k\)  
-- \( \text{Load}(t) \in [0,1] \): Normalized utilization level  
-- \( \theta_{\text{cap}} \): Maximum safe capacity threshold  
-- \( \text{HazardEvents}(t) \): Count of verified hazard events  
-```
-
 ## Definition 2: History-Reputation Trust (HRT)
 
 ```math
