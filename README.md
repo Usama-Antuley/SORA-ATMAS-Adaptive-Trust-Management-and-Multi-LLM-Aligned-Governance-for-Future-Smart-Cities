@@ -1044,7 +1044,6 @@ T_{\text{base}}
 \big(M_{i,k}(t)\big)^{w_{i,k}},
 \;1.0
 \right)
-\]
 ```
 
 ## Definition 6: Overall Trust
@@ -1054,7 +1053,6 @@ T^{i}_{\text{Overall}}(t)
 w_{\text{HRT}}(t)\, T^{i}_{\text{HRT}}(t)
 +
 w_{C}(t)\, T^{i}_{\text{Ctx}}(t)
-\]
 ```
 
 Dynamic weights:
@@ -1068,7 +1066,6 @@ T_{\text{Ecosystem}}(t)
 
 R_{\text{Ecosystem}}(t)
 =\max_{i\in A(t)} R_i(t)
-\]
 ```
 
 ## 🚀 Running the System
