@@ -1,0 +1,115 @@
+[
+    {
+        "Contract": "SORA-Weather-Traffic-CrossDomain",
+        "GlobalRuleHash": "SORA-WT-RULE-001",
+        "ServiceThreshold": 0.60,
+        "PreviousTrust": 0.78,
+        "ServiceTrust": 0.82,
+        "Time": "2024-05-15T21:56:11Z",
+        "RiskScore": 0.15,
+        "TrustViolation": false,
+        "EscalationLevel": 0
+    },
+    {
+        "Contract": "SORA-Traffic-Safety-JointActuation",
+        "GlobalRuleHash": "SORA-TS-RULE-002",
+        "ServiceThreshold": 0.65,
+        "PreviousTrust": 0.62,
+        "ServiceTrust": 0.68,
+        "Time": "2024-05-15T21:56:13Z",
+        "RiskScore": 0.82,
+        "TrustViolation": true,
+        "EscalationLevel": 1
+    },
+    {
+        "Contract": "SORA-Weather-Advisory",
+        "GlobalRuleHash": "SORA-WEA-RULE-003",
+        "ServiceThreshold": 0.60,
+        "PreviousTrust": 0.75,
+        "ServiceTrust": 0.79,
+        "Time": "2024-05-15T20:57:29Z",
+        "RiskScore": 0.25,
+        "TrustViolation": false,
+        "EscalationLevel": 0
+    },
+    {
+        "Contract": "SORA-Traffic-Rerouting",
+        "GlobalRuleHash": "SORA-TRA-RULE-004",
+        "ServiceThreshold": 0.55,
+        "PreviousTrust": 0.58,
+        "ServiceTrust": 0.61,
+        "Time": "2024-05-15T20:57:31Z",
+        "RiskScore": 0.88,
+        "TrustViolation": true,
+        "EscalationLevel": 2
+    },
+    {
+        "Contract": "SORA-Safety-Evacuation",
+        "GlobalRuleHash": "SORA-SAF-RULE-005",
+        "ServiceThreshold": 0.65,
+        "PreviousTrust": 0.71,
+        "ServiceTrust": 0.74,
+        "Time": "2024-05-15T20:59:45Z",
+        "RiskScore": 0.92,
+        "TrustViolation": false,
+        "EscalationLevel": 3
+    },
+    {
+        "Contract": "SORA-Ecosystem-Escalation",
+        "GlobalRuleHash": "SORA-ECO-RULE-006",
+        "ServiceThreshold": 0.60,
+        "PreviousTrust": 0.68,
+        "ServiceTrust": 0.65,
+        "Time": "2024-05-15T21:00:12Z",
+        "RiskScore": 0.75,
+        "TrustViolation": true,
+        "EscalationLevel": 2
+    },
+    {
+        "Contract": "SORA-Weather-Traffic-Coordination",
+        "GlobalRuleHash": "SORA-WT-RULE-007",
+        "ServiceThreshold": 0.60,
+        "PreviousTrust": 0.81,
+        "ServiceTrust": 0.83,
+        "Time": "2024-05-15T21:03:03Z",
+        "RiskScore": 0.12,
+        "TrustViolation": false,
+        "EscalationLevel": 0
+    },
+    {
+        "Contract": "SORA-Traffic-Safety-Protocol",
+        "GlobalRuleHash": "SORA-TS-RULE-008",
+        "ServiceThreshold": 0.65,
+        "PreviousTrust": 0.69,
+        "ServiceTrust": 0.72,
+        "Time": "2024-05-15T21:04:38Z",
+        "RiskScore": 0.45,
+        "TrustViolation": false,
+        "EscalationLevel": 1
+    },
+    {
+        "Contract": "SORA-Hysteresis-Control",
+        "GlobalRuleHash": "SORA-HYS-RULE-009",
+        "ServiceThreshold": 0.60,
+        "PreviousTrust": 0.73,
+        "ServiceTrust": 0.71,
+        "Time": "2024-05-15T21:04:40Z",
+        "RiskScore": 0.68,
+        "TrustViolation": true,
+        "EscalationLevel": 1,
+        "CooldownActive": true,
+        "CooldownRemaining": 15
+    },
+    {
+        "Contract": "SORA-CityWide-Alert",
+        "GlobalRuleHash": "SORA-CWA-RULE-010",
+        "ServiceThreshold": 0.60,
+        "PreviousTrust": 0.59,
+        "ServiceTrust": 0.57,
+        "Time": "2024-05-15T21:08:34Z",
+        "RiskScore": 0.81,
+        "TrustViolation": true,
+        "EscalationLevel": 3,
+        "HumanConfirmationRequired": true
+    }
+]
