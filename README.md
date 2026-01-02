@@ -187,9 +187,76 @@ Use `create_sora_streams.py` to initialize all required streams on both blockcha
 
 *(See code snippets and descriptions in the original content)*
 
-## 📐 Trust & Risk Model Mathematics
+# 📐 Trust & Risk Model Mathematics  
+**Formal Definitions from the SORA-ATMAS Framework**
 
-Formal definitions and Python implementations of environmental risk, history-reputation trust, contextual trust, overall trust, and ecosystem metrics.
+## Definition 1: Environmental Risk
+
+Environmental risk quantifies deviations from expected operating conditions across continuous signals, capacity constraints, and discrete hazard events.
+
+```math
+R^{i}_{\text{Env}}(t)=
+\begin{cases}
+\displaystyle \frac{1}{n}\sum_{k=1}^{n}\mathbb{I}\big(|x_k(t)-\mu_k|>\theta_k\big), & \text{continuous signals} \\
+\mathbb{I}\big(\text{Load}(t)>\theta_{\text{cap}}\big), & \text{capacity / volume conditions} \\
+\mathbb{I}\big(\text{HazardEvents}(t)\ge 1\big), & \text{discrete hazard events}
+\end{cases}
+```
+
+## Definition 2: History-Reputation Trust (HRT)
+
+```math
+T^{i}_{\text{HRT}}(t)=
+\begin{cases}
+T_0, & t=t_0 \\
+\delta \, T^{i}_{\text{HRT}}(t-\Delta T)
++(1-\delta)\big(\omega_p\, s(t)+\omega_r\, T^{i}_{\text{Rep}}(t)\big), & \text{otherwise}
+\end{cases}
+```
+## Definition 3: Service Risk
+```math
+R^{i}_{\text{Service}}(t)=1-T^{i}_{\text{HRT}}(t-\Delta T), \qquad
+R^{i}_{\text{Service}}(t_0)=0.5
+```
+
+## Definition 4: Overall Agent Risk
+```math
+R_i(t)=\lambda_i\, R^{i}_{\text{Env}}(t)
++\big(1-\lambda_i\big)R^{i}_{\text{Service}}(t)
+```
+
+## Definition 5: Contextual Trust
+```math
+T^{i}_{\text{Ctx}}(t)
+=\min\!\left(
+T_{\text{base}}
+\prod_{k=1}^{n_i}
+\big(M_{i,k}(t)\big)^{w_{i,k}},
+\;1.0
+\right)
+```
+
+## Definition 6: Overall Trust
+```math
+T^{i}_{\text{Overall}}(t)
+=
+w_{\text{HRT}}(t)\, T^{i}_{\text{HRT}}(t)
++
+w_{C}(t)\, T^{i}_{\text{Ctx}}(t)
+```
+
+Dynamic weights:
+```math
+w_{C}(t) = 0.5 + 0.2\, R_i(t)
+```
+## Definition 7: Ecosystem Metrics
+```math
+T_{\text{Ecosystem}}(t)
+=\frac{1}{|A(t)|}\sum_{i\in A(t)}T^{i}_{\text{Overall}}(t)
+
+R_{\text{Ecosystem}}(t)
+=\max_{i\in A(t)} R_i(t)
+```
 
 ## 🚀 Running the System
 
@@ -220,15 +287,182 @@ streamlit run monitor_dashboard.py --server.port 8501
 
 ## 🔌 API Documentation
 
-Detailed examples for agent and governance API methods *(see original content)*.
+### Agent API Methods
+**WeatherAgent.fetch_weather_data(latitude, longitude)**
+```bash
+def fetch_weather_data(self, latitude, longitude):
+    """
+    Fetch real-time weather data from OpenMeteo API.
+    
+    Args:
+        latitude (float): Geographic latitude
+        longitude (float): Geographic longitude
+        
+    Returns:
+        dict: Weather data including temperature, precipitation, humidity, etc.
+        
+    Example:
+        >>> agent = WeatherAgent()
+        >>> data = agent.fetch_weather_data(33.6844, 73.0479)
+        >>> print(data['temperature'])
+        28.5
+    """
+```
+**TrafficAgent.process_frame(frame, confidence_threshold=0.5)** 
+```bash
+def process_frame(self, frame, confidence_threshold=0.5):
+    """
+    Process a single frame for vehicle detection and congestion analysis.
+    
+    Args:
+        frame (numpy.ndarray): Input image frame (BGR format)
+        confidence_threshold (float): Minimum confidence for detection (0-1)
+        
+    Returns:
+        dict: Detection results including bounding boxes, counts, and congestion score
+        
+    Raises:
+        ValueError: If frame is None or empty
+        RuntimeError: If model inference fails
+        
+    Example:
+        >>> agent = TrafficAgent()
+        >>> frame = cv2.imread('traffic.jpg')
+        >>> results = agent.process_frame(frame)
+        >>> print(results['vehicle_count'])
+        23
+    """
+```
+**SafetyAgent.detect_hazards(frame, emergency_threshold=0.7)**
+```bash
+def detect_hazards(self, frame, emergency_threshold=0.7):
+    """
+    Detect fire and smoke hazards in a surveillance frame.
+    
+    Args:
+        frame (numpy.ndarray): Input image frame
+        emergency_threshold (float): Confidence threshold for emergency alerts
+        
+    Returns:
+        tuple: (hazard_data, emergency_level, recommended_actions)
+        
+    Notes:
+        - emergency_threshold=0.7 corresponds to "HIGH" emergency level
+        - Returns empty results if no hazards detected
+    """
+```
+### SORA Governance API Methods
+**SORAGovernance.validate_and_select(agent_data, llm_outputs)**
+```bash
+def validate_and_select(self, agent_data, llm_outputs):
+    """
+    Validate agent outputs and select best LLM using MAE-based selection.
+    
+    Args:
+        agent_data (dict): Raw agent data including observations and context
+        llm_outputs (dict): Dictionary of LLM outputs {llm_name: {R, T, explanation}}
+        
+    Returns:
+        dict: Selection results with validation, MAE scores, and feedback
+        
+    Process:
+        1. Apply risk-trust gate (policy S1)
+        2. Compute MAE for each LLM (policy S2)
+        3. Select LLM with minimum MAE
+        4. Generate error-directed feedback for others (policy S3)
+        5. Apply cross-domain constraints if applicable
+        
+    Example:
+        >>> governance = SORAGovernance()
+        >>> results = governance.validate_and_select(weather_data, llm_outputs)
+        >>> print(results['selected_llm'])
+        'GPT-4'
+    """
+```
+**SORAGovernance.enforce_ecosystem_policies(agent_decisions)**
+```bash
+def enforce_ecosystem_policies(self, agent_decisions):
+    """
+    Enforce system-wide policies across all agents.
+    
+    Args:
+        agent_decisions (dict): Dictionary of decisions from all active agents
+        
+    Returns:
+        dict: Enforcement results including violations and coordinated actions
+        
+    Policies Enforced:
+        - S4: Joint actuation when ≥2 agents have R > 0.80
+        - S5: City-wide escalation when ecosystem risk > 0.70
+        - S6: Hysteresis and cooldown to prevent oscillations
+        
+    Example:
+        >>> decisions = {
+        ...     'weather': {'R': 0.85, 'T': 0.65, 'action': 'issue_flood_advisory'},
+        ...     'traffic': {'R': 0.78, 'T': 0.58, 'action': 'reroute_traffic'}
+        ... }
+        >>> enforcement = governance.enforce_ecosystem_policies(decisions)
+        >>> print(enforcement['coordinated_actions'])
+        ['Joint flood-traffic coordination activated']
+    """
+```
+### Blockchain API Methods
+**BlockchainClient.publish_to_stream(stream_name, key, data)**
+```bash
+def publish_to_stream(self, stream_name, key, data):
+    """
+    Publish data to a blockchain stream with automatic JSON serialization.
+    
+    Args:
+        stream_name (str): Name of the blockchain stream
+        key (str): Unique key for data retrieval
+        data (dict): JSON-serializable data to publish
+        
+    Returns:
+        str: Transaction ID if successful
+        
+    Raises:
+        BlockchainError: If publishing fails
+        StreamNotFound: If specified stream doesn't exist
+        
+    Example:
+        >>> client = BlockchainClient('agentic', 9741)
+        >>> txid = client.publish_to_stream(
+        ...     'WeatherAgentLogs',
+        ...     'weather_123456',
+        ...     {'temperature': 28.5, 'risk': 0.3}
+        ... )
+        >>> print(f"Published with TX: {txid}")
+    """
+```
+**BlockchainClient.query_stream(stream_name, count=10, start=-10)**
+```bash
+def query_stream(self, stream_name, count=10, start=-10):
+    """
+    Query items from a blockchain stream.
+    
+    Args:
+        stream_name (str): Name of the blockchain stream
+        count (int): Number of items to retrieve
+        start (int): Starting position (negative for from end)
+        
+    Returns:
+        list: Stream items with data and metadata
+        
+    Example:
+        >>> client = BlockchainClient('sora', 9743)
+        >>> items = client.query_stream('GovDecisions', count=5)
+        >>> for item in items:
+        ...     print(item['data']['decision_id'])
+    """
+```
+### REST API Endpoints (Optional)
+#### If running with web server:
+#### Start REST API server
 
-## 🐛 Troubleshooting
-
-Common issues, solutions, and debugging tips provided.
-
-## 📈 System Monitoring
-
-Streamlit-based dashboard, command-line monitors, and alerting system.
+```bash
+python api_server.py --port 8080 --host 0.0.0.0
+```
 
 ## 📚 Citation
 
