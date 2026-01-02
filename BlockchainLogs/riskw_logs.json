@@ -1,0 +1,482 @@
+[
+  {
+    "timestamp": "2025-09-03 22:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 27.2,
+      "humidity_pct": 88.0,
+      "wind_kmh": 10.2,
+      "precip_mmph": 0.0,
+      "cloud_pct": 46.0,
+      "uv_index": 0.0
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.872952"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 27.1,
+      "humidity_pct": 87.0,
+      "wind_kmh": 10.3,
+      "precip_mmph": 0.0,
+      "cloud_pct": 50.0,
+      "uv_index": 0.0
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.872973"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 00:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 27.0,
+      "humidity_pct": 87.0,
+      "wind_kmh": 11.5,
+      "precip_mmph": 0.0,
+      "cloud_pct": 73.0,
+      "uv_index": 0.0
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.872991"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 01:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 26.8,
+      "humidity_pct": 87.0,
+      "wind_kmh": 12.6,
+      "precip_mmph": 0.0,
+      "cloud_pct": 74.0,
+      "uv_index": 0.0
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873005"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 02:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.167,
+      "R_Service": 0.5,
+      "R_Overall": 0.3
+    },
+    "environmental_context": {
+      "temp_c": 26.8,
+      "humidity_pct": 87.0,
+      "wind_kmh": 11.6,
+      "precip_mmph": 0.0,
+      "cloud_pct": 94.0,
+      "uv_index": 0.0
+    },
+    "action": "Advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873026"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 03:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.167,
+      "R_Service": 0.5,
+      "R_Overall": 0.3
+    },
+    "environmental_context": {
+      "temp_c": 26.8,
+      "humidity_pct": 87.0,
+      "wind_kmh": 12.2,
+      "precip_mmph": 0.0,
+      "cloud_pct": 92.0,
+      "uv_index": 0.0
+    },
+    "action": "Advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873040"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 04:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.167,
+      "R_Service": 0.5,
+      "R_Overall": 0.3
+    },
+    "environmental_context": {
+      "temp_c": 26.7,
+      "humidity_pct": 87.0,
+      "wind_kmh": 12.1,
+      "precip_mmph": 0.0,
+      "cloud_pct": 92.0,
+      "uv_index": 0.0
+    },
+    "action": "Advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873055"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 05:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 26.6,
+      "humidity_pct": 87.0,
+      "wind_kmh": 12.5,
+      "precip_mmph": 0.0,
+      "cloud_pct": 88.0,
+      "uv_index": 0.0
+    },
+    "action": "Advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873069"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 06:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 26.5,
+      "humidity_pct": 86.0,
+      "wind_kmh": 13.0,
+      "precip_mmph": 0.0,
+      "cloud_pct": 82.0,
+      "uv_index": 0.0
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873084"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 07:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 26.5,
+      "humidity_pct": 86.0,
+      "wind_kmh": 13.4,
+      "precip_mmph": 0.0,
+      "cloud_pct": 81.0,
+      "uv_index": 0.1
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873098"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 08:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 27.0,
+      "humidity_pct": 84.0,
+      "wind_kmh": 14.2,
+      "precip_mmph": 0.0,
+      "cloud_pct": 83.0,
+      "uv_index": 1.05
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873180"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 09:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 27.6,
+      "humidity_pct": 81.0,
+      "wind_kmh": 14.9,
+      "precip_mmph": 0.0,
+      "cloud_pct": 76.0,
+      "uv_index": 2.55
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873194"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 10:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 28.4,
+      "humidity_pct": 77.0,
+      "wind_kmh": 14.8,
+      "precip_mmph": 0.0,
+      "cloud_pct": 56.0,
+      "uv_index": 4.4
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873208"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 11:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 29.1,
+      "humidity_pct": 74.0,
+      "wind_kmh": 15.8,
+      "precip_mmph": 0.0,
+      "cloud_pct": 59.0,
+      "uv_index": 6.0
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873222"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 12:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 29.8,
+      "humidity_pct": 69.0,
+      "wind_kmh": 17.3,
+      "precip_mmph": 0.0,
+      "cloud_pct": 46.0,
+      "uv_index": 6.95
+    },
+    "action": "Advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873236"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 13:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 30.0,
+      "humidity_pct": 69.0,
+      "wind_kmh": 18.5,
+      "precip_mmph": 0.0,
+      "cloud_pct": 29.0,
+      "uv_index": 7.45
+    },
+    "action": "Advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873250"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 14:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 29.9,
+      "humidity_pct": 70.0,
+      "wind_kmh": 20.2,
+      "precip_mmph": 0.0,
+      "cloud_pct": 35.0,
+      "uv_index": 7.15
+    },
+    "action": "Advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873264"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 15:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 29.7,
+      "humidity_pct": 73.0,
+      "wind_kmh": 20.8,
+      "precip_mmph": 0.0,
+      "cloud_pct": 41.0,
+      "uv_index": 6.05
+    },
+    "action": "Advisory",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873281"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 16:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 29.3,
+      "humidity_pct": 74.0,
+      "wind_kmh": 21.4,
+      "precip_mmph": 0.0,
+      "cloud_pct": 43.0,
+      "uv_index": 4.45
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873294"
+    }
+  },
+  {
+    "timestamp": "2025-09-04 17:00:00+05:00",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.2
+    },
+    "environmental_context": {
+      "temp_c": 28.8,
+      "humidity_pct": 76.0,
+      "wind_kmh": 20.8,
+      "precip_mmph": 0.0,
+      "cloud_pct": 42.0,
+      "uv_index": 2.65
+    },
+    "action": "No Action",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "weather_agent_001",
+      "blockchain_stream": "RiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "created_at": "2026-01-02T19:58:27.873310"
+    }
+  }
+]
