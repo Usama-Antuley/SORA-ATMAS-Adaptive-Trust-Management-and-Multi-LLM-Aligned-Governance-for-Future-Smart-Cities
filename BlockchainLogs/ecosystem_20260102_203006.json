@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-01-02T20:30:06.950226",
+  "ecosystem_id": "SORA_ECOSYSTEM_001",
+  "metrics": {
+    "overall_risk": 0.85,
+    "overall_trust": 0.7233333333333333,
+    "ecosystem_score": 0.7993333333333333,
+    "max_agent_risk": 0.85,
+    "avg_agent_trust": 0.7233333333333333,
+    "active_agents": 3,
+    "joint_actuation": true,
+    "escalation": false
+  },
+  "status": {
+    "ecosystem_status": "CRITICAL",
+    "alert_level": "RED",
+    "recommended_action": "Immediate emergency response - Activate all protocols"
+  },
+  "agent_summary": [
+    {
+      "agent_id": "Weather",
+      "risk": 0.45,
+      "trust": 0.78,
+      "decision": "approve",
+      "selected_model": "gpt-4o-nano"
+    },
+    {
+      "agent_id": "Traffic",
+      "risk": 0.65,
+      "trust": 0.68,
+      "decision": "restrict",
+      "selected_model": "deepseek-r1"
+    },
+    {
+      "agent_id": "Safety",
+      "risk": 0.85,
+      "trust": 0.71,
+      "decision": "restrict",
+      "selected_model": "grok"
+    }
+  ],
+  "blockchain_info": {
+    "chain_type": "SORA_Global",
+    "stream": "Global_Ecosystem_Metrics",
+    "version": "SORA-ATMAS-v2.0",
+    "anchored": true,
+    "transaction_id": "TX_ecosystem_1767385806_7563",
+    "blockchain_timestamp": "2026-01-02T20:30:06.950971"
+  }
+}

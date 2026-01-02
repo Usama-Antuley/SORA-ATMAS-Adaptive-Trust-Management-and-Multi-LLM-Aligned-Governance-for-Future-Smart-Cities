@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-01-02T20:30:06.953460",
+  "event_type": "agent_fallback",
+  "agent_id": "Weather_002",
+  "fallback_reason": "Admission gate failed - Trust threshold not met",
+  "original_metrics": {
+    "R_overall": 0.3,
+    "T_overall": 0.45
+  },
+  "fallback_action": "Use historical average values",
+  "recovery_metrics": {
+    "estimated_recovery_time": "5-10 minutes",
+    "data_integrity_score": 0.95,
+    "recommended_verification": "Cross-check with adjacent agents"
+  },
+  "severity": "LOW",
+  "blockchain_info": {
+    "chain_type": "SORA_Global",
+    "stream": "Global_Fallback_Events",
+    "version": "SORA-ATMAS-v2.0",
+    "anchored": true,
+    "transaction_id": "TX_fallback_events_1767385806_2706",
+    "blockchain_timestamp": "2026-01-02T20:30:06.953834"
+  }
+}
