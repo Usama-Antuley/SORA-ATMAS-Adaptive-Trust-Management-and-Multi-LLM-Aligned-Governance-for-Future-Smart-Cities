@@ -1,0 +1,62 @@
+[
+    {
+        "LocalpolicyHash": "b2afcb0f1ed02435c28ea7d459d15d605f47e6cba082fb533e363a651d9662b1",
+        "AgentID": "WeatherAgent",
+        "OverallTrust": 0.82,
+        "OverallRisk": 0.18,
+        "EnvironmentalRisk": 0.12,
+        "ContextualTrust": 0.85,
+        "HistoryReputationTrust": 0.80,
+        "Time": "21:53:11"
+    },
+    {
+        "LocalpolicyHash": "b2afcb0f1ed02435c28ea7d459d15d605f47e6cba082fb533e363a651d9662b1",
+        "AgentID": "WeatherAgent",
+        "OverallTrust": 0.81,
+        "OverallRisk": 0.19,
+        "EnvironmentalRisk": 0.13,
+        "ContextualTrust": 0.84,
+        "HistoryReputationTrust": 0.79,
+        "Time": "21:53:13"
+    },
+    {
+        "LocalpolicyHash": "b2afcb0f1ed02435c28ea7d459d15d605f47e6cba082fb533e363a651d9662b1",
+        "AgentID": "TrafficAgent",
+        "OverallTrust": 0.65,
+        "OverallRisk": 0.85,
+        "EnvironmentalRisk": 0.88,
+        "ContextualTrust": 0.62,
+        "HistoryReputationTrust": 0.68,
+        "Time": "21:10:34"
+    },
+    {
+        "LocalpolicyHash": "b2afcb0f1ed02435c28ea7d459d15d605f47e6cba082fb533e363a651d9662b1",
+        "AgentID": "TrafficAgent",
+        "OverallTrust": 0.64,
+        "OverallRisk": 0.86,
+        "EnvironmentalRisk": 0.89,
+        "ContextualTrust": 0.61,
+        "HistoryReputationTrust": 0.67,
+        "Time": "21:10:35"
+    },
+    {
+        "LocalpolicyHash": "b2afcb0f1ed02435c28ea7d459d15d605f47e6cba082fb533e363a651d9662b1",
+        "AgentID": "SafetyAgent",
+        "OverallTrust": 0.78,
+        "OverallRisk": 0.22,
+        "EnvironmentalRisk": 0.15,
+        "ContextualTrust": 0.80,
+        "HistoryReputationTrust": 0.76,
+        "Time": "21:12:29"
+    },
+    {
+        "LocalpolicyHash": "b2afcb0f1ed02435c28ea7d459d15d605f47e6cba082fb533e363a651d9662b1",
+        "AgentID": "SafetyAgent",
+        "OverallTrust": 0.79,
+        "OverallRisk": 0.21,
+        "EnvironmentalRisk": 0.14,
+        "ContextualTrust": 0.81,
+        "HistoryReputationTrust": 0.77,
+        "Time": "21:12:30"
+    }
+]
