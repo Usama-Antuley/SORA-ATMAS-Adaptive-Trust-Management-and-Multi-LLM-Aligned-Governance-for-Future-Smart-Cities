@@ -77,7 +77,7 @@ SORA-ATMAS (Security & Operational Response Agent - Adaptive Trust Management Sy
 |  │ Reasoning      │|     |  │ Selection       │━━┿━━━━━┿━▶│ Hysteresis &    │  |
 |  └─────────────────┘|     |  └─────────────────┘  |     |  │ Cooldown        │  |
 +---------------------+     +-----------------------+     +-----------------------+
-
+```
 ## 🏗️ Architecture Components
 
 - **Perception Layer**: IoT sensors, CCTV cameras, and API data sources
