@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-SORA-ATMAS Multi-LLM Agent (GitHub version)
+SORA-ATMAS Multi-LLM Agent 
 Run with: python llm_brain.py
 """
 import os
