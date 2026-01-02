@@ -1023,7 +1023,6 @@ R^{i}_{\text{Env}}(t)=
 - \( \text{Load}(t) \in [0,1] \): Normalized utilization level  
 - \( \theta_{\text{cap}} \): Maximum safe capacity threshold  
 - \( \text{HazardEvents}(t) \): Count of verified hazard events  
-
 ---
 
 ## Definition 2: History-Reputation Trust (HRT)
@@ -1036,7 +1035,6 @@ T_0, & t=t_0 \\
 +(1-\delta)\big(\omega_p\, s(t)+\omega_r\, T^{i}_{\text{Rep}}(t)\big), & \text{otherwise}
 \end{cases}
 \]
-
 ---
 
 ## Definition 3: Service Risk
@@ -1045,7 +1043,6 @@ T_0, & t=t_0 \\
 R^{i}_{\text{Service}}(t)=1-T^{i}_{\text{HRT}}(t-\Delta T), \qquad
 R^{i}_{\text{Service}}(t_0)=0.5
 \]
-
 ---
 
 ## Definition 4: Overall Agent Risk
@@ -1054,7 +1051,6 @@ R^{i}_{\text{Service}}(t_0)=0.5
 R_i(t)=\lambda_i\, R^{i}_{\text{Env}}(t)
 +\big(1-\lambda_i\big)R^{i}_{\text{Service}}(t)
 \]
-
 ---
 
 ## Definition 5: Contextual Trust
@@ -1068,18 +1064,26 @@ T_{\text{base}}
 \;1.0
 \right)
 \]
-
 ---
 
 ## Definition 6: Overall Trust
 
 \[
 T^{i}_{\text{Overall}}(t)
-=w_{\text{HRT}}(t)\,T^{i}_{\text{HRT}}(t)
-+w_C(t)\,T^{i}_{\text{Ctx}}(t)
+=
+w_{\text{HRT}}(t)\, T^{i}_{\text{HRT}}(t)
++
+w_{C}(t)\, T^{i}_{\text{Ctx}}(t)
 \]
-
 ---
+Dynamic weights:
+
+\[
+w_{C}(t) = 0.5 + 0.2\, R_i(t)
+\]
+---
+
+
 
 ## Definition 7: Ecosystem Metrics
 
@@ -1087,12 +1091,12 @@ T^{i}_{\text{Overall}}(t)
 T_{\text{Ecosystem}}(t)
 =\frac{1}{|A(t)|}\sum_{i\in A(t)}T^{i}_{\text{Overall}}(t)
 \]
-
+---
 \[
 R_{\text{Ecosystem}}(t)
 =\max_{i\in A(t)} R_i(t)
 \]
-
+---
 
 ## 🚀 Running the System
 
