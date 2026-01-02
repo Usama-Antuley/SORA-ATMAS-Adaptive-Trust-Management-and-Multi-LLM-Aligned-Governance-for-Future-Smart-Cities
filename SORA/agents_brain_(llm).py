@@ -11,8 +11,8 @@ from xai_sdk import Client as XAIClient
 # --------------------------------------------------
 # CONFIGURATION
 # --------------------------------------------------
-BASE_DIR = "agent"
-RESULT_DIR = "results"
+BASE_DIR = "Agent"
+RESULT_DIR = "Results"
 os.makedirs(RESULT_DIR, exist_ok=True)
 
 MODELS = ["gpt-4o-nano", "deepseek-r1", "grok"]
