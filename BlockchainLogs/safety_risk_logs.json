@@ -1,0 +1,582 @@
+[
+  {
+    "timestamp": "2025-09-03 23:08:44",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "smoke",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "smoke detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "smoke",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:09:02.775652"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:08:49",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "fire",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "fire detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "fire",
+      "emergency_level": "CRITICAL",
+      "created_at": "2026-01-02T20:09:02.775677"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:08:54",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "fire",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "fire detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "fire",
+      "emergency_level": "CRITICAL",
+      "created_at": "2026-01-02T20:09:02.775703"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:09:16",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "smoke",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "smoke detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "smoke",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:09:02.775722"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:09:21",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "smoke",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "smoke detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "smoke",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:09:02.775741"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:09:26",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "fire",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "fire detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "fire",
+      "emergency_level": "CRITICAL",
+      "created_at": "2026-01-02T20:09:02.775757"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:09:31",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "fire",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "fire detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "fire",
+      "emergency_level": "CRITICAL",
+      "created_at": "2026-01-02T20:09:02.775776"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:09:36",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "fire",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "fire detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "fire",
+      "emergency_level": "CRITICAL",
+      "created_at": "2026-01-02T20:09:02.775793"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:09:42",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "smoke",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "smoke detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "smoke",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:09:02.775809"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:09:47",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "fire",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "fire detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "fire",
+      "emergency_level": "CRITICAL",
+      "created_at": "2026-01-02T20:09:02.775823"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:09:52",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "fire",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "fire detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "fire",
+      "emergency_level": "CRITICAL",
+      "created_at": "2026-01-02T20:09:02.775839"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:09:59",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "smoke",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "smoke detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "smoke",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:09:02.775854"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:10:04",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "fire",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "fire detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "fire",
+      "emergency_level": "CRITICAL",
+      "created_at": "2026-01-02T20:09:02.775868"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:10:09",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "smoke",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "smoke detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "smoke",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:09:02.775890"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:10:15",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "smoke",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "smoke detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "smoke",
+      "emergency_level": "HIGH",
+      "created_at": "2026-01-02T20:09:02.775904"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:10:20",
+    "risk_metrics": {
+      "R_Env": 1.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.9
+    },
+    "detection_context": {
+      "class": "fire",
+      "confidence": 0.9,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 1
+    },
+    "action": "Advisory",
+    "comment": "fire detected (conf=0.90), Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "fire",
+      "emergency_level": "CRITICAL",
+      "created_at": "2026-01-02T20:09:02.775917"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:10:23",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.1
+    },
+    "detection_context": {
+      "class": "none",
+      "confidence": 0.0,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 0
+    },
+    "action": "Advisory",
+    "comment": "No smoke/fire event, Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "none",
+      "emergency_level": "LOW",
+      "created_at": "2026-01-02T20:09:02.775934"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:10:33",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.1
+    },
+    "detection_context": {
+      "class": "none",
+      "confidence": 0.0,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 0
+    },
+    "action": "Advisory",
+    "comment": "No smoke/fire event, Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "none",
+      "emergency_level": "LOW",
+      "created_at": "2026-01-02T20:09:02.775949"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:10:45",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.1
+    },
+    "detection_context": {
+      "class": "none",
+      "confidence": 0.0,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 0
+    },
+    "action": "Advisory",
+    "comment": "No smoke/fire event, Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "none",
+      "emergency_level": "LOW",
+      "created_at": "2026-01-02T20:09:02.775967"
+    }
+  },
+  {
+    "timestamp": "2025-09-03 23:10:57",
+    "risk_metrics": {
+      "R_Env": 0.0,
+      "R_Service": 0.5,
+      "R_Overall": 0.1
+    },
+    "detection_context": {
+      "class": "none",
+      "confidence": 0.0,
+      "camera_id": "",
+      "gps_lat": 24.861,
+      "gps_lon": 67.001,
+      "heartbeat_ok": false,
+      "smoke_events": 0
+    },
+    "action": "Advisory",
+    "comment": "No smoke/fire event, Cam=NA, GPS valid, heartbeat missing, confidence not provided; assumed 0.90 for alerts, N60=0.",
+    "metadata": {
+      "record_type": "risk_log",
+      "agent_id": "safety_agent_001",
+      "agent_type": "fire_smoke_detection",
+      "blockchain_stream": "SafetyRiskMetrics",
+      "version": "SORA-ATMAS-v1.0",
+      "hazard_type": "none",
+      "emergency_level": "LOW",
+      "created_at": "2026-01-02T20:09:02.775983"
+    }
+  }
+]
