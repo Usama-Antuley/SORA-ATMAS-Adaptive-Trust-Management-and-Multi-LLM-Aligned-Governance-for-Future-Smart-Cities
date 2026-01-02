@@ -1015,8 +1015,15 @@ R^{i}_{\text{Env}}(t)=
 
 ### Parameters
 ```math
-- \( n \): Number of monitored environmental parameters  
-- \( x_k(t) \): Normalized observation of parameter \(k\) at time \(t\)  
+-
+```math
+\( n \):
+```
+Number of monitored environmental parameters  
+-
+```math
+\( x_k(t) \)
+```: Normalized observation of parameter \(k\) at time \(t\)  
 - \( \mu_k \): Expected baseline value for parameter \(k\)  
 - \( \theta_k \): Acceptable deviation threshold for parameter \(k\)  
 - \( \text{Load}(t) \in [0,1] \): Normalized utilization level  
