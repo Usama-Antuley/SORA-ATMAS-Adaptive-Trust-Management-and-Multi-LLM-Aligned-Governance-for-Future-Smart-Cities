@@ -1,115 +1,142 @@
 [
     {
-        "Contract": "SORA-Weather-Traffic-CrossDomain",
-        "GlobalRuleHash": "SORA-WT-RULE-001",
-        "ServiceThreshold": 0.60,
-        "PreviousTrust": 0.78,
-        "ServiceTrust": 0.82,
-        "Time": "2024-05-15T21:56:11Z",
-        "RiskScore": 0.15,
-        "TrustViolation": false,
-        "EscalationLevel": 0
+        "RuleID": "S1",
+        "Scope": "Governance",
+        "Description": "Risk-Trust Admission Gate",
+        "TrustBaselines": {
+            "WeatherAgent": 0.60,
+            "TrafficAgent": 0.55,
+            "SafetyAgent": 0.65
+        },
+        "Tolerances": {
+            "RiskTolerance": 0.07,
+            "TrustTolerance": 0.05
+        },
+        "Condition": "|ΔR| ≤ 0.07, |ΔT| ≤ 0.05, and T_Overall ≥ τ_T(agent)",
+        "Action": "Admit for processing",
+        "AppliedTo": ["WeatherAgent", "TrafficAgent", "SafetyAgent"],
+        "EnforcedOn": "SORA-Chain",
+        "LastUpdated": "2024-05-15T21:56:11Z"
     },
     {
-        "Contract": "SORA-Traffic-Safety-JointActuation",
-        "GlobalRuleHash": "SORA-TS-RULE-002",
-        "ServiceThreshold": 0.65,
-        "PreviousTrust": 0.62,
-        "ServiceTrust": 0.68,
-        "Time": "2024-05-15T21:56:13Z",
-        "RiskScore": 0.82,
-        "TrustViolation": true,
-        "EscalationLevel": 1
+        "RuleID": "S2",
+        "Scope": "Governance",
+        "Description": "LLM Selection & Tie-Break",
+        "PrimaryCondition": "Select model with max T_Overall",
+        "TieBreakCondition": "If tie (within 0.01), select min|ΔR|",
+        "FallbackRules": {
+            "WeatherAgent": "none",
+            "TrafficAgent": "none",
+            "SafetyAgent": "nearest T ≥ τ_T, else nearest T"
+        },
+        "Action": "Select authoritative LLM for decision",
+        "AppliedTo": ["WeatherAgent", "TrafficAgent", "SafetyAgent"],
+        "EnforcedOn": "SORA-Chain",
+        "LastUpdated": "2024-05-15T21:56:13Z"
     },
     {
-        "Contract": "SORA-Weather-Advisory",
-        "GlobalRuleHash": "SORA-WEA-RULE-003",
-        "ServiceThreshold": 0.60,
-        "PreviousTrust": 0.75,
-        "ServiceTrust": 0.79,
-        "Time": "2024-05-15T20:57:29Z",
-        "RiskScore": 0.25,
-        "TrustViolation": false,
-        "EscalationLevel": 0
+        "RuleID": "S3",
+        "Scope": "Governance",
+        "Description": "Error-Directed Feedback",
+        "FeedbackFormulation": {
+            "ΔR": "R_SORA - R_LLM",
+            "ΔT": "T_SORA - T_LLM"
+        },
+        "AdjustmentFactor": 0.5,
+        "ClipRange": [0, 1],
+        "Action": "Apply feedback to non-selected LLMs",
+        "Purpose": "Drive convergence toward SORA reference",
+        "AppliedTo": ["WeatherAgent", "TrafficAgent", "SafetyAgent"],
+        "EnforcedOn": "SORA-Chain",
+        "LastUpdated": "2024-05-15T20:57:29Z"
     },
     {
-        "Contract": "SORA-Traffic-Rerouting",
-        "GlobalRuleHash": "SORA-TRA-RULE-004",
-        "ServiceThreshold": 0.55,
-        "PreviousTrust": 0.58,
-        "ServiceTrust": 0.61,
-        "Time": "2024-05-15T20:57:31Z",
-        "RiskScore": 0.88,
-        "TrustViolation": true,
-        "EscalationLevel": 2
+        "RuleID": "W1",
+        "Scope": "Agent",
+        "AgentID": "WeatherAgent",
+        "Description": "Weather Hazard Trigger",
+        "Condition": "R_Env > 0.60 AND T_Overall < 0.65",
+        "Action": "Issue flood/heatwave advisories",
+        "LLMSelection": "Post-S1: Select LLM closest to SORA reference",
+        "CrossDomainRequirement": "Must validate with TrafficAgent for rerouting",
+        "EnforcedOn": "Agentic-Chain",
+        "LastUpdated": "2024-05-15T20:57:31Z"
     },
     {
-        "Contract": "SORA-Safety-Evacuation",
-        "GlobalRuleHash": "SORA-SAF-RULE-005",
-        "ServiceThreshold": 0.65,
-        "PreviousTrust": 0.71,
-        "ServiceTrust": 0.74,
-        "Time": "2024-05-15T20:59:45Z",
-        "RiskScore": 0.92,
-        "TrustViolation": false,
-        "EscalationLevel": 3
+        "RuleID": "T1",
+        "Scope": "Agent",
+        "AgentID": "TrafficAgent",
+        "Description": "Traffic Congestion Trigger",
+        "Condition": "R_Overall ≥ 0.95 AND T_Overall < 0.65",
+        "Action": "Trigger rerouting and adaptive signal tuning",
+        "LLMSelection": "Post-S1: Select closest-to-SORA LLM",
+        "CrossDomainDependency": {
+            "Requires": "WeatherAgent validation",
+            "Condition": "Weather must be Normal or Rain (not Heavy Rain/Heatwave)"
+        },
+        "EnforcedOn": "SORA-Chain",
+        "LastUpdated": "2024-05-15T20:59:45Z"
     },
     {
-        "Contract": "SORA-Ecosystem-Escalation",
-        "GlobalRuleHash": "SORA-ECO-RULE-006",
-        "ServiceThreshold": 0.60,
-        "PreviousTrust": 0.68,
-        "ServiceTrust": 0.65,
-        "Time": "2024-05-15T21:00:12Z",
-        "RiskScore": 0.75,
-        "TrustViolation": true,
-        "EscalationLevel": 2
+        "RuleID": "F1",
+        "Scope": "Agent",
+        "AgentID": "SafetyAgent",
+        "Description": "Fire/Smoke Hazard Trigger",
+        "Condition": "R_Overall ≥ 0.95 AND T_Overall > 0.65",
+        "Action": "Dispatch emergency services and trigger evacuation",
+        "LLMSelection": "Post-S1: Enforce most consistent LLM",
+        "CrossDomainDependency": {
+            "Requires": "TrafficAgent coordination",
+            "Condition": "Traffic must be rerouted to clear emergency routes"
+        },
+        "EnforcedOn": "SORA-Chain",
+        "LastUpdated": "2024-05-15T21:00:12Z"
     },
     {
-        "Contract": "SORA-Weather-Traffic-Coordination",
-        "GlobalRuleHash": "SORA-WT-RULE-007",
-        "ServiceThreshold": 0.60,
-        "PreviousTrust": 0.81,
-        "ServiceTrust": 0.83,
-        "Time": "2024-05-15T21:03:03Z",
-        "RiskScore": 0.12,
-        "TrustViolation": false,
-        "EscalationLevel": 0
+        "RuleID": "S4",
+        "Scope": "Cross-Agent",
+        "Description": "Joint Actuation Trigger",
+        "Condition": "≥2 agents with R_Overall > 0.80",
+        "Action": "Coordinate joint actuation (co-alerts, synchronized reroutes)",
+        "Modulation": "T_Overall modulates confidence in joint actions",
+        "AppliedTo": "All agents",
+        "EnforcedOn": "SORA-Chain",
+        "LastUpdated": "2024-05-15T21:03:03Z"
     },
     {
-        "Contract": "SORA-Traffic-Safety-Protocol",
-        "GlobalRuleHash": "SORA-TS-RULE-008",
-        "ServiceThreshold": 0.65,
-        "PreviousTrust": 0.69,
-        "ServiceTrust": 0.72,
-        "Time": "2024-05-15T21:04:38Z",
-        "RiskScore": 0.45,
-        "TrustViolation": false,
-        "EscalationLevel": 1
+        "RuleID": "S5",
+        "Scope": "Ecosystem",
+        "Description": "City-Wide Escalation",
+        "Condition": "R_Ecosystem > 0.70 AND T_Ecosystem ≥ 0.60",
+        "Action": "Trigger city-wide escalation protocols",
+        "HumanConfirmation": "Required if T_Ecosystem < 0.60",
+        "AppliedTo": "All agents and services",
+        "EnforcedOn": "SORA-Chain",
+        "LastUpdated": "2024-05-15T21:04:38Z"
     },
     {
-        "Contract": "SORA-Hysteresis-Control",
-        "GlobalRuleHash": "SORA-HYS-RULE-009",
-        "ServiceThreshold": 0.60,
-        "PreviousTrust": 0.73,
-        "ServiceTrust": 0.71,
-        "Time": "2024-05-15T21:04:40Z",
-        "RiskScore": 0.68,
-        "TrustViolation": true,
-        "EscalationLevel": 1,
-        "CooldownActive": true,
-        "CooldownRemaining": 15
+        "RuleID": "S6",
+        "Scope": "Ecosystem",
+        "Description": "Stability Control",
+        "Parameters": {
+            "Hysteresis": 0.05,
+            "CooldownPeriod": 15
+        },
+        "Purpose": "Prevent oscillation and alert spam",
+        "Action": "Apply hysteresis and enforce cooldown period",
+        "AppliedTo": "All escalation triggers",
+        "EnforcedOn": "SORA-Chain",
+        "LastUpdated": "2024-05-15T21:04:40Z"
     },
     {
-        "Contract": "SORA-CityWide-Alert",
-        "GlobalRuleHash": "SORA-CWA-RULE-010",
-        "ServiceThreshold": 0.60,
-        "PreviousTrust": 0.59,
-        "ServiceTrust": 0.57,
-        "Time": "2024-05-15T21:08:34Z",
-        "RiskScore": 0.81,
-        "TrustViolation": true,
-        "EscalationLevel": 3,
-        "HumanConfirmationRequired": true
+        "RuleID": "CD1",
+        "Scope": "Cross-Domain",
+        "Description": "Weather-Traffic Coordination",
+        "InvolvedAgents": ["WeatherAgent", "TrafficAgent"],
+        "Condition": "Traffic rerouting requires weather validation",
+        "ValidationLogic": "If WeatherAgent.R_Env > 0.60 → Deny traffic rerouting",
+        "Action": "Enforce sequential validation",
+        "EnforcedOn": "SORA-Chain",
+        "LastUpdated": "2024-05-15T21:08:34Z"
     }
 ]
