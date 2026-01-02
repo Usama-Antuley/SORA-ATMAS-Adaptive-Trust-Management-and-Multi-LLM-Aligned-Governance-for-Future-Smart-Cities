@@ -1016,6 +1016,7 @@ R^{i}_{\text{Env}}(t)=
 \]
 
 ### Parameters
+```math
 - \( n \): Number of monitored environmental parameters  
 - \( x_k(t) \): Normalized observation of parameter \(k\) at time \(t\)  
 - \( \mu_k \): Expected baseline value for parameter \(k\)  
@@ -1023,20 +1024,18 @@ R^{i}_{\text{Env}}(t)=
 - \( \text{Load}(t) \in [0,1] \): Normalized utilization level  
 - \( \theta_{\text{cap}} \): Maximum safe capacity threshold  
 - \( \text{HazardEvents}(t) \): Count of verified hazard events  
----
+```
 
 ## Definition 2: History-Reputation Trust (HRT)
 
-\[
+```math
 T^{i}_{\text{HRT}}(t)=
 \begin{cases}
 T_0, & t=t_0 \\
 \delta \, T^{i}_{\text{HRT}}(t-\Delta T)
 +(1-\delta)\big(\omega_p\, s(t)+\omega_r\, T^{i}_{\text{Rep}}(t)\big), & \text{otherwise}
 \end{cases}
-\]
----
-
+```
 ## Definition 3: Service Risk
 
 \[
