@@ -388,51 +388,90 @@ class SORA:
         print(f"Anchored SORA record: {mock_tx_id}")
         return mock_tx_id
 
-# Example Execution
+
+    def load_agent_results(agent_name):
+        models = [
+        ("gpt-4o-nano", f"{agent_name}_Results_gpt4onano.xlsx"),
+        ("deepseek-r1", f"{agent_name}_Results_deepseekr1.xlsx"),
+        ("grok",        f"{agent_name}_Results_grok.xlsx"),
+        ]
+    
+        llm_outputs = []
+        r_total = 0.0
+        t_total = 0.0
+        count = 0
+        metadata = {}
+    
+        for model_name, filename in models:
+            filepath = os.path.join("results", filename)
+            if not os.path.exists(filepath):
+                print(f"File not found: {filepath}")
+                continue
+                try:
+                    df = pd.read_excel(filepath)
+                    row = df.iloc[0]  # first row
+            
+                    # Find R_Overall and T_Overall columns (flexible name matching)
+                    r_col = next((c for c in df.columns if "r_overall" in c.lower()), None)
+                    t_col = next((c for c in df.columns if "t_overall" in c.lower()), None)
+            
+                    if r_col is None or t_col is None:
+                        print(f"  Warning: Missing R/T columns in {filename}")
+                        continue
+                
+                        r = float(row[r_col])
+                        t = float(row[t_col])
+            
+                        llm_outputs.append({
+                            "model": model_name,
+                            "R": r,
+                            "T": t,
+                            "explanation": row.get("Final Comment", "No explanation")})
+            
+                        r_total += r
+                        t_total += t
+                        count += 1
+            
+                        if agent_name == "Weather" and "predicted_label" in df.columns:
+                            metadata["predicted_label"] = str(row["predicted_label"])
+                        elif agent_name == "Traffic" and "vehicle_count" in df.columns:
+                            metadata["vehicle_count"] = float(row["vehicle_count"])
+                        elif agent_name == "Safety":
+                            if "class" in df.columns:
+                                metadata["class"] = str(row["class"])
+                                if "fire_detected" in df.columns:
+                                    metadata["fire_detected"] = bool(row["fire_detected"])
+                                if "smoke_detected" in df.columns:
+                                    metadata["smoke_detected"] = bool(row["smoke_detected"]) 
+                except Exception as e:
+                    print(f"Error loading {filename}: {e}")
+    
+        if count == 0:
+            print(f"ERROR: No data loaded for {agent_name}")
+            # Fallback to avoid crash - use mock values
+            return {
+                "agent_id": agent_name,
+                "timestamp": timestamp,
+                "R_overall": 0.5,
+                "T_overall": 0.6,
+                "llm_outputs": [],
+                "metadata": {}
+            }
+        return {
+            "agent_id": agent_name,
+            "timestamp": timestamp,
+            "R_overall": r_total / count,
+            "T_overall": t_total / count,
+            "llm_outputs": llm_outputs,
+            "metadata": metadata
+        }
+
 if __name__ == "__main__":
     sora = SORA()
 
-    # Example inputs (as specified: Weather=Normal, Traffic=20/100m, Safety=Fire+Smoke)
-    timestamp = "2025-12-31T23:59:59Z"
-    location = {"latitude": 37.7749, "longitude": -122.4194, "zone": "San Francisco Zone 1"}
-
-    # Mock agent packets (assume llm_outputs with varying R/T, R_overall/T_overall close to ref)
-    weather_packet = {
-        "agent_id": "Weather",
-        "timestamp": timestamp,
-        "R_overall": 0.05,  # Close to ref 0.0
-        "T_overall": 0.62,
-        "llm_outputs": [
-            {"model": "GPT-4", "R": 0.0, "T": 0.60, "explanation": "Normal weather."},
-            {"model": "Grok", "R": 0.1, "T": 0.65, "explanation": "Slight anomaly."},
-            {"model": "DeepSeek", "R": 0.05, "T": 0.58, "explanation": "Stable."}
-        ],
-        "metadata": {"predicted_label": "Normal"}
-    }
-    traffic_packet = {
-        "agent_id": "Traffic",
-        "timestamp": timestamp,
-        "R_overall": 0.38,  # Close to ref 0.4 (20/50=0.4)
-        "T_overall": 0.56,
-        "llm_outputs": [
-            {"model": "GPT-4", "R": 0.4, "T": 0.55, "explanation": "Moderate traffic."},
-            {"model": "Grok", "R": 0.3, "T": 0.60, "explanation": "Low congestion."},
-            {"model": "DeepSeek", "R": 0.45, "T": 0.50, "explanation": "Building up."}
-        ],
-        "metadata": {"vehicle_count": 20}
-    }
-    safety_packet = {
-        "agent_id": "Safety",
-        "timestamp": timestamp,
-        "R_overall": 0.95,  # Close to ref 1.0
-        "T_overall": 0.66,
-        "llm_outputs": [
-            {"model": "GPT-4", "R": 1.0, "T": 0.65, "explanation": "Fire and smoke detected."},
-            {"model": "Grok", "R": 0.9, "T": 0.70, "explanation": "High alert."},
-            {"model": "DeepSeek", "R": 0.95, "T": 0.60, "explanation": "Confirmed hazard."}
-        ],
-        "metadata": {"fire_detected": True, "smoke_detected": True}
-    }
+    weather_packet = load_agent_results("Weather")
+    traffic_packet = load_agent_results("Traffic")
+    safety_packet  = load_agent_results("Safety")
 
     # Process agents
     agent_packets = [weather_packet, traffic_packet, safety_packet]
