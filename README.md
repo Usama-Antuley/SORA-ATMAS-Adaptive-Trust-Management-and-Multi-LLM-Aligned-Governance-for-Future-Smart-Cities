@@ -1000,20 +1000,18 @@ class SORAGovernance:
 # 📐 Trust & Risk Model Mathematics  
 **Formal Definitions from the SORA-ATMAS Framework**
 
----
-
 ## Definition 1: Environmental Risk
 
 Environmental risk quantifies deviations from expected operating conditions across continuous signals, capacity constraints, and discrete hazard events.
 
-\[
+```math
 R^{i}_{\text{Env}}(t)=
 \begin{cases}
 \displaystyle \frac{1}{n}\sum_{k=1}^{n}\mathbb{I}\big(|x_k(t)-\mu_k|>\theta_k\big), & \text{continuous signals} \\
 \mathbb{I}\big(\text{Load}(t)>\theta_{\text{cap}}\big), & \text{capacity / volume conditions} \\
 \mathbb{I}\big(\text{HazardEvents}(t)\ge 1\big), & \text{discrete hazard events}
 \end{cases}
-\]
+```
 
 ### Parameters
 ```math
@@ -1037,24 +1035,19 @@ T_0, & t=t_0 \\
 \end{cases}
 ```
 ## Definition 3: Service Risk
-
-\[
+```math
 R^{i}_{\text{Service}}(t)=1-T^{i}_{\text{HRT}}(t-\Delta T), \qquad
 R^{i}_{\text{Service}}(t_0)=0.5
-\]
----
+```
 
 ## Definition 4: Overall Agent Risk
-
-\[
+```math
 R_i(t)=\lambda_i\, R^{i}_{\text{Env}}(t)
 +\big(1-\lambda_i\big)R^{i}_{\text{Service}}(t)
-\]
----
+```
 
 ## Definition 5: Contextual Trust
-
-\[
+```math
 T^{i}_{\text{Ctx}}(t)
 =\min\!\left(
 T_{\text{base}}
@@ -1063,39 +1056,31 @@ T_{\text{base}}
 \;1.0
 \right)
 \]
----
+```
 
 ## Definition 6: Overall Trust
-
-\[
+```math
 T^{i}_{\text{Overall}}(t)
 =
 w_{\text{HRT}}(t)\, T^{i}_{\text{HRT}}(t)
 +
 w_{C}(t)\, T^{i}_{\text{Ctx}}(t)
 \]
----
+```
+
 Dynamic weights:
-
-\[
+```math
 w_{C}(t) = 0.5 + 0.2\, R_i(t)
-\]
----
-
-
-
+```
 ## Definition 7: Ecosystem Metrics
-
-\[
+```math
 T_{\text{Ecosystem}}(t)
 =\frac{1}{|A(t)|}\sum_{i\in A(t)}T^{i}_{\text{Overall}}(t)
-\]
----
-\[
+
 R_{\text{Ecosystem}}(t)
 =\max_{i\in A(t)} R_i(t)
 \]
----
+```
 
 ## 🚀 Running the System
 
